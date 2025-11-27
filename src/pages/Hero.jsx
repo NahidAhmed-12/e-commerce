@@ -16,7 +16,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1589212987511-4a924cb9d8ac?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1529139574466-a302d2052505?q=80&w=2070&auto=format&fit=crop",
     title: "Classic Aura",
     subtitle: "Timeless Series"
   }
@@ -72,16 +72,23 @@ const Hero = () => {
             </p>
           </div>
           
-          {/* Orange Themed Buttons */}
+          {/* Orange Themed Buttons with Icons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8">
-            {/* Primary Button: Solid Orange */}
-            <button className="px-8 py-3.5 bg-orange-600 text-white rounded-lg text-sm font-bold tracking-wide hover:bg-orange-700 transition-all duration-300 shadow-lg shadow-orange-600/30 transform hover:-translate-y-0.5">
+            
+            {/* Primary Button: Solid Orange + Shopping Icon */}
+            <button className="group flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-600 text-white rounded-lg text-sm font-bold tracking-wide hover:bg-orange-700 transition-all duration-300 shadow-lg shadow-orange-600/30 transform hover:-translate-y-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 group-hover:scale-110 transition-transform">
+                <path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clipRule="evenodd" />
+              </svg>
               Shop Collection
             </button>
             
-            {/* Secondary Button: Outline with Orange Hover */}
-            <button className="px-8 py-3.5 border-2 border-orange-100 dark:border-orange-900/50 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-bold tracking-wide hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300">
+            {/* Secondary Button: Outline + Arrow Icon */}
+            <button className="group flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-orange-100 dark:border-orange-900/50 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-bold tracking-wide hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 bg-white/50 dark:bg-black/20">
               View Lookbook
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </button>
           </div>
 
@@ -123,31 +130,42 @@ const Hero = () => {
                     className="w-full h-full object-cover"
                     />
                     
-                    {/* Glassmorphism Text Card */}
-                    <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md border border-white/30 p-4 rounded-xl">
-                        <p className="text-orange-200 text-xs tracking-wider uppercase mb-1 font-bold">{slide.subtitle}</p>
+                    {/* Glassmorphism Text Card Inside Image */}
+                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 pt-20">
+                        <p className="text-orange-300 text-xs tracking-wider uppercase mb-1 font-bold">{slide.subtitle}</p>
                         <h3 className="text-white text-xl font-serif tracking-wide">{slide.title}</h3>
                     </div>
                 </div>
                 ))}
-            </div>
 
-            {/* Controls (Orange Hover Effect) */}
-            <div className="absolute -bottom-12 right-0 flex space-x-4">
+                {/* --- SLIDER CONTROLS (ARROWS) INSIDE IMAGE --- */}
                 <button 
                     onClick={prevSlide}
-                    className="p-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 hover:text-orange-600 hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-110"
                 >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
                 <button 
                     onClick={nextSlide}
-                    className="p-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-500 hover:text-orange-600 hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-110"
                 >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
-            </div>
 
+                {/* --- SLIDER INDICATORS (DOTS) INSIDE IMAGE --- */}
+                <div className="absolute bottom-4 right-4 flex space-x-2">
+                    {slides.map((_, index) => (
+                        <div
+                            key={index}
+                            onClick={() => setCurrentSlide(index)}
+                            className={`h-1.5 rounded-full cursor-pointer transition-all duration-500 shadow-sm ${
+                                currentSlide === index ? 'bg-orange-500 w-6' : 'bg-white/60 w-2 hover:bg-white'
+                            }`}
+                        ></div>
+                    ))}
+                </div>
+
+            </div>
           </div>
         </div>
 
