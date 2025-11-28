@@ -65,7 +65,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
         </button>
 
         {/* --- Left Side: Gallery Section --- */}
-        {/* Mobile: Sticky position so it stays behind the scrolling text */}
+        {/* z-0 ensures it stays behind. sticky top-0 creates the parallax effect */}
         <div className="w-full h-[65vh] sm:h-auto sm:w-1/2 lg:w-[45%] bg-gray-100 sm:bg-white/50 dark:bg-white/5 sticky top-0 sm:relative flex flex-col items-center justify-center p-0 sm:p-6 lg:p-10 shrink-0 z-0 sm:z-auto">
             
             {/* Main Image */}
@@ -85,8 +85,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
             </div>
 
             {/* Thumbnail Strip */}
-            {/* FIX 1: Desktop centered (justify-center) & No scroll appearance. Mobile: Horizontal scroll hidden bars */}
-            <div className="absolute bottom-16 left-0 right-0 sm:static sm:translate-x-0 sm:mt-6 flex gap-3 z-20 overflow-x-auto sm:overflow-visible sm:justify-center sm:flex-wrap max-w-full px-4 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] justify-center">
+            <div className="absolute bottom-16 left-0 right-0 sm:static sm:translate-x-0 sm:mt-6 flex gap-3 z-20 overflow-x-auto sm:overflow-visible justify-start sm:justify-center px-4 sm:px-0 no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
                 {thumbnails.map((thumb, index) => (
                   <div 
                     key={index} 
@@ -100,8 +99,9 @@ const ProductDetailsModal = ({ product, onClose }) => {
         </div>
 
         {/* --- Right Side: Content Section --- */}
-        {/* FIX 2: Increased z-index to z-40 to cover the sticky image completely. Added bg-white for solid opacity */}
-        <div className="w-full sm:w-1/2 lg:w-[55%] relative z-40 bg-white sm:bg-[#FFFBF7] dark:bg-[#0f0f0f] -mt-8 sm:mt-0 rounded-t-[2rem] sm:rounded-none px-6 py-8 sm:p-12 overflow-visible sm:overflow-y-auto scrollbar-thin scrollbar-thumb-orange-200 dark:scrollbar-thumb-orange-900 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] sm:shadow-none min-h-[50vh] sm:min-h-0">
+        {/* FIX: min-h-screen added to ensure background covers the sticky image completely when scrolling down. 
+            bg-[#FFFBF7] (solid color) ensures opacity. */}
+        <div className="w-full sm:w-1/2 lg:w-[55%] relative z-30 bg-[#FFFBF7] dark:bg-[#0f0f0f] -mt-8 sm:mt-0 rounded-t-[2rem] sm:rounded-none px-6 py-8 sm:p-12 overflow-visible sm:overflow-y-auto scrollbar-thin scrollbar-thumb-orange-200 dark:scrollbar-thumb-orange-900 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] sm:shadow-none min-h-screen sm:min-h-0">
             
             {/* Mobile Drag Indicator */}
             <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto mb-6 sm:hidden"></div>
@@ -191,10 +191,10 @@ const ProductDetailsModal = ({ product, onClose }) => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col gap-4 mb-8">
+                <div className="flex flex-col gap-4 mb-8 relative z-10">
                     <div className="flex gap-3 sm:gap-4">
                         {/* Quantity */}
-                        <div className="flex items-center bg-white dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg px-2 h-14">
+                        <div className="flex items-center bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-700 rounded-lg px-2 h-14">
                             <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-8 h-full text-gray-500 hover:text-orange-600">-</button>
                             <span className="w-6 sm:w-8 text-center font-bold text-gray-900 dark:text-white">{quantity}</span>
                             <button onClick={() => setQuantity(quantity + 1)} className="w-8 h-full text-gray-500 hover:text-orange-600">+</button>
@@ -215,14 +215,14 @@ const ProductDetailsModal = ({ product, onClose }) => {
                         </button>
 
                         {/* Wishlist */}
-                        <button className="h-14 w-14 flex flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-red-500 hover:border-red-200 bg-white dark:bg-transparent transition-all">
+                        <button className="h-14 w-14 flex flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-red-500 hover:border-red-200 bg-white dark:bg-[#1a1a1a] transition-all">
                             <FaHeart size={20} />
                         </button>
                     </div>
                 </div>
 
                 {/* Tabs / Info Section */}
-                <div className="border-t border-gray-100 dark:border-gray-800 pt-6 pb-10 sm:pb-0">
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-6 pb-10 sm:pb-0 bg-[#FFFBF7] dark:bg-[#0f0f0f]">
                     <div className="flex gap-6 sm:gap-8 mb-4">
                         {['Description', 'Details', 'Delivery'].map(tab => (
                              <button
