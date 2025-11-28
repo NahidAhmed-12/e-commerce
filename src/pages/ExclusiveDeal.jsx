@@ -1,7 +1,51 @@
-import React from 'react';
-import { FaArrowRight, FaShoppingBag } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
 const ExclusiveDeal = () => {
+  // কাউন্টডাউন টাইমার স্টেট
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    mins: 0,
+    secs: 0,
+  });
+
+  useEffect(() => {
+    // উদাহরণস্বরূপ: বর্তমান সময় থেকে ২ দিন পরের সময় সেট করা হলো
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 2); 
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        clearInterval(interval);
+      } else {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / 1000 / 60) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
+
+        setTimeLeft({ days, hours, mins: minutes, secs: seconds });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // সংখ্যা ২ ডিজিটে দেখানোর জন্য (যেমন: ৯ এর বদলে ০৯)
+  const formatTime = (time) => {
+    return time < 10 ? `0${time}` : time;
+  };
+
+  const timerItems = [
+    { label: 'Days', value: timeLeft.days },
+    { label: 'Hours', value: timeLeft.hours },
+    { label: 'Mins', value: timeLeft.mins },
+    { label: 'Secs', value: timeLeft.secs },
+  ];
+
   return (
     // এই সেকশনটি সবসময় ডার্ক থাকবে (Luxury Feel এর জন্য)
     <section className="w-full py-24 bg-[#0a0a0a] relative overflow-hidden font-sans">
@@ -21,20 +65,21 @@ const ExclusiveDeal = () => {
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           
           {/* Image Side (Floating Effect) */}
-          <div className="w-full md:w-1/2 relative group">
+          <div className="w-full md:w-1/2 relative group flex justify-center">
             
             {/* Glowing Circle Behind Image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
             
             <div className="relative z-10 transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-105">
+                {/* Image Fixed: Added fixed height and object-cover */}
                 <img 
                     src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1964&auto=format&fit=crop" 
                     alt="Exclusive Deal" 
-                    className="w-full h-auto object-cover rounded-3xl shadow-2xl shadow-orange-900/20 rotate-[-5deg] group-hover:rotate-0 transition-all duration-700 ease-in-out"
+                    className="w-full max-w-[500px] h-[400px] md:h-[550px] object-cover rounded-3xl shadow-2xl shadow-orange-900/20 rotate-[-5deg] group-hover:rotate-0 transition-all duration-700 ease-in-out"
                 />
                 
                 {/* Floating Glass Badge */}
-                <div className="absolute bottom-10 -right-6 md:-right-10 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-lg animate-bounce-slow">
+                <div className="absolute bottom-10 -right-4 md:-right-8 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-lg animate-bounce-slow">
                     <p className="text-gray-300 text-xs uppercase tracking-widest">Special Price</p>
                     <p className="text-3xl font-bold text-white">$199</p>
                 </div>
@@ -63,13 +108,15 @@ const ExclusiveDeal = () => {
                     Experience the fusion of style and comfort. A masterpiece of design available for a limited time. Don't miss out on this icon.
                 </p>
 
-                {/* Minimalist Timer */}
+                {/* Live Minimalist Timer */}
                 <div className="flex justify-center md:justify-start gap-8 pt-4 pb-6">
-                    {['02', '14', '45', '12'].map((num, index) => (
+                    {timerItems.map((item, index) => (
                         <div key={index} className="flex flex-col items-center">
-                            <span className="font-serif text-4xl text-white">{num}</span>
+                            <span className="font-serif text-4xl text-white">
+                                {formatTime(item.value)}
+                            </span>
                             <span className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">
-                                {['Days', 'Hours', 'Mins', 'Secs'][index]}
+                                {item.label}
                             </span>
                         </div>
                     ))}
