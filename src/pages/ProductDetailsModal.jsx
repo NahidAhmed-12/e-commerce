@@ -38,38 +38,38 @@ const ProductDetailsModal = ({ product, onClose }) => {
 
   if (!product) return null;
 
-  // Mock Thumbnails (In real app, this comes from product data)
   const thumbnails = [product.img, product.img, product.img, product.img];
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-4 transition-all duration-500 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-500 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       
-      {/* Backdrop with Blur */}
+      {/* Backdrop */}
       <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-500" 
+        className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-500" 
         onClick={handleClose}
       ></div>
 
       {/* Main Modal Card */}
-      <div className={`w-full h-full sm:h-auto sm:max-h-[95vh] max-w-6xl bg-[#FFFBF7] dark:bg-[#0f0f0f] sm:rounded-3xl shadow-2xl relative overflow-hidden flex flex-col sm:flex-row transition-all duration-500 transform ${isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-12'}`}>
+      <div className={`w-full h-full sm:h-auto sm:max-h-[95vh] max-w-6xl bg-[#FFFBF7] dark:bg-[#0f0f0f] sm:rounded-3xl shadow-2xl relative flex flex-col sm:flex-row transition-all duration-500 transform overflow-y-auto sm:overflow-hidden ${isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-12'}`}>
         
-        {/* Background Ambient Glows (Hero Theme) */}
+        {/* Background Ambient Glows */}
         <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-orange-400/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-orange-600/5 rounded-full blur-[80px] pointer-events-none"></div>
 
-        {/* Close Button (Floating) */}
+        {/* Close Button */}
         <button 
           onClick={handleClose} 
-          className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/40 dark:bg-black/40 hover:bg-orange-600 hover:text-white backdrop-blur-md border border-white/20 transition-all duration-300 group"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[60] p-2 rounded-full bg-white/20 sm:bg-white/40 dark:bg-black/40 hover:bg-orange-600 hover:text-white backdrop-blur-md border border-white/20 transition-all duration-300 group"
         >
-          <FaTimes size={20} className="text-gray-800 dark:text-white group-hover:text-white group-hover:rotate-90 transition-transform duration-300" />
+          <FaTimes size={20} className="text-white sm:text-gray-800 dark:text-white group-hover:text-white transition-transform duration-300 group-hover:rotate-90" />
         </button>
 
         {/* --- Left Side: Gallery Section --- */}
-        <div className="w-full sm:w-1/2 lg:w-[45%] bg-white/50 dark:bg-white/5 relative flex flex-col items-center justify-center p-6 lg:p-10">
+        {/* Mobile: Sticky position so it stays behind the scrolling text */}
+        <div className="w-full h-[65vh] sm:h-auto sm:w-1/2 lg:w-[45%] bg-gray-100 sm:bg-white/50 dark:bg-white/5 sticky top-0 sm:relative flex flex-col items-center justify-center p-0 sm:p-6 lg:p-10 shrink-0 z-0 sm:z-auto">
             
-            {/* Main Image with Elegant Shadow */}
-            <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-black/50 z-10">
+            {/* Main Image */}
+            <div className="relative w-full h-full sm:h-auto sm:max-w-md sm:aspect-[3/4] rounded-none sm:rounded-2xl overflow-hidden sm:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-black/50 z-10">
                 <img 
                   src={mainImage} 
                   alt={product.name} 
@@ -78,19 +78,20 @@ const ProductDetailsModal = ({ product, onClose }) => {
                 
                 {/* Sale Tag */}
                 {product.oldPrice && (
-                  <div className="absolute top-4 left-0 bg-orange-600 text-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg">
+                  <div className="absolute top-4 left-0 sm:top-4 sm:left-0 bg-orange-600 text-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg">
                     On Sale
                   </div>
                 )}
             </div>
 
             {/* Thumbnail Strip */}
-            <div className="flex gap-3 mt-6 z-10">
+            {/* FIX 1: Desktop centered (justify-center) & No scroll appearance. Mobile: Horizontal scroll hidden bars */}
+            <div className="absolute bottom-16 left-0 right-0 sm:static sm:translate-x-0 sm:mt-6 flex gap-3 z-20 overflow-x-auto sm:overflow-visible sm:justify-center sm:flex-wrap max-w-full px-4 sm:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] justify-center">
                 {thumbnails.map((thumb, index) => (
                   <div 
                     key={index} 
                     onClick={() => setMainImage(thumb)}
-                    className={`w-14 h-14 rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 ${mainImage === thumb ? 'border-orange-500 scale-110 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 flex-shrink-0 backdrop-blur-sm ${mainImage === thumb ? 'border-orange-500 scale-110 shadow-md' : 'border-white/50 sm:border-transparent opacity-70 hover:opacity-100'}`}
                   >
                     <img src={thumb} alt="thumb" className="w-full h-full object-cover" />
                   </div>
@@ -99,12 +100,16 @@ const ProductDetailsModal = ({ product, onClose }) => {
         </div>
 
         {/* --- Right Side: Content Section --- */}
-        <div className="w-full sm:w-1/2 lg:w-[55%] p-6 lg:p-12 overflow-y-auto scrollbar-thin scrollbar-thumb-orange-200 dark:scrollbar-thumb-orange-900">
+        {/* FIX 2: Increased z-index to z-40 to cover the sticky image completely. Added bg-white for solid opacity */}
+        <div className="w-full sm:w-1/2 lg:w-[55%] relative z-40 bg-white sm:bg-[#FFFBF7] dark:bg-[#0f0f0f] -mt-8 sm:mt-0 rounded-t-[2rem] sm:rounded-none px-6 py-8 sm:p-12 overflow-visible sm:overflow-y-auto scrollbar-thin scrollbar-thumb-orange-200 dark:scrollbar-thumb-orange-900 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] sm:shadow-none min-h-[50vh] sm:min-h-0">
             
+            {/* Mobile Drag Indicator */}
+            <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto mb-6 sm:hidden"></div>
+
             <div className="max-w-xl mx-auto sm:mx-0">
                 
                 {/* Breadcrumb / Category */}
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-3 sm:mb-4">
                     <span className="h-px w-8 bg-orange-500"></span>
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600 dark:text-orange-400">
                       {product.category || 'Collection'}
@@ -112,12 +117,12 @@ const ProductDetailsModal = ({ product, onClose }) => {
                 </div>
 
                 {/* Title */}
-                <h2 className="font-serif text-4xl lg:text-5xl text-gray-900 dark:text-white leading-tight mb-2">
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-gray-900 dark:text-white leading-tight mb-2">
                   {product.name}
                 </h2>
 
                 {/* Rating & Review */}
-                <div className="flex items-center gap-4 mb-8 text-sm">
+                <div className="flex items-center gap-4 mb-6 sm:mb-8 text-sm">
                     <div className="flex text-orange-500 gap-0.5">
                         {[...Array(5)].map((_, i) => <FaStar key={i} size={14} />)}
                     </div>
@@ -125,22 +130,22 @@ const ProductDetailsModal = ({ product, onClose }) => {
                 </div>
 
                 {/* Price Display */}
-                <div className="flex items-end gap-4 mb-8">
-                    <span className="font-serif text-4xl text-gray-900 dark:text-white">
+                <div className="flex items-end gap-4 mb-6 sm:mb-8">
+                    <span className="font-serif text-3xl sm:text-4xl text-gray-900 dark:text-white">
                       ${product.price}
                     </span>
                     {product.oldPrice && (
-                       <span className="text-xl text-gray-400 line-through mb-1 font-light">
+                       <span className="text-lg sm:text-xl text-gray-400 line-through mb-1 font-light">
                          ${product.oldPrice}
                        </span>
                     )}
                 </div>
 
                 {/* Divider */}
-                <div className="w-full h-px bg-gradient-to-r from-gray-200 via-gray-100 to-transparent dark:from-gray-800 dark:via-gray-800 mb-8"></div>
+                <div className="w-full h-px bg-gradient-to-r from-gray-200 via-gray-100 to-transparent dark:from-gray-800 dark:via-gray-800 mb-6 sm:mb-8"></div>
 
                 {/* Options Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div className="grid grid-cols-1 gap-6 sm:gap-8 mb-8">
                     
                     {/* Color Selector */}
                     <div>
@@ -187,38 +192,38 @@ const ProductDetailsModal = ({ product, onClose }) => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-4 mb-8">
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 sm:gap-4">
                         {/* Quantity */}
                         <div className="flex items-center bg-white dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg px-2 h-14">
                             <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-8 h-full text-gray-500 hover:text-orange-600">-</button>
-                            <span className="w-8 text-center font-bold text-gray-900 dark:text-white">{quantity}</span>
+                            <span className="w-6 sm:w-8 text-center font-bold text-gray-900 dark:text-white">{quantity}</span>
                             <button onClick={() => setQuantity(quantity + 1)} className="w-8 h-full text-gray-500 hover:text-orange-600">+</button>
                         </div>
 
                         {/* Add to Cart Button */}
                         <button 
                           onClick={handleAddToCart}
-                          className={`flex-1 h-14 rounded-lg font-bold uppercase tracking-wider text-sm shadow-lg shadow-orange-600/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 ${
+                          className={`flex-1 h-14 rounded-lg font-bold uppercase tracking-wider text-xs sm:text-sm shadow-lg shadow-orange-600/20 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 ${
                             isAdded ? 'bg-green-600 text-white' : 'bg-orange-600 hover:bg-orange-700 text-white'
                           }`}
                         >
                           {isAdded ? (
-                            <> <FaCheck className="mb-1"/> Added to Cart </>
+                            <> <FaCheck className="mb-1"/> Added </>
                           ) : (
                             <> <FaShoppingCart className="mb-1"/> Add to Cart </>
                           )}
                         </button>
 
                         {/* Wishlist */}
-                        <button className="h-14 w-14 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-red-500 hover:border-red-200 bg-white dark:bg-transparent transition-all">
+                        <button className="h-14 w-14 flex flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-red-500 hover:border-red-200 bg-white dark:bg-transparent transition-all">
                             <FaHeart size={20} />
                         </button>
                     </div>
                 </div>
 
                 {/* Tabs / Info Section */}
-                <div className="border-t border-gray-100 dark:border-gray-800 pt-6">
-                    <div className="flex gap-8 mb-4">
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-6 pb-10 sm:pb-0">
+                    <div className="flex gap-6 sm:gap-8 mb-4">
                         {['Description', 'Details', 'Delivery'].map(tab => (
                              <button
                                 key={tab}
