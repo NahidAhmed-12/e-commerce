@@ -1,45 +1,57 @@
 import React from 'react';
-import { FaShippingFast, FaHeadset, FaMoneyBillWave, FaLock } from 'react-icons/fa';
+// FaLock এর বদলে FaShieldAlt ইম্পোর্ট করা হয়েছে
+import { FaShippingFast, FaHeadset, FaMoneyBillWave, FaShieldAlt } from 'react-icons/fa';
 
 const Services = () => {
   const services = [
     {
       id: 1,
-      icon: <FaShippingFast size={30} />,
+      icon: <FaShippingFast size={26} />,
       title: "Free Shipping",
       desc: "On all orders over $100",
     },
     {
       id: 2,
-      icon: <FaMoneyBillWave size={30} />,
+      icon: <FaMoneyBillWave size={26} />,
       title: "Money Returns",
       desc: "30 Days money-back guarantee",
     },
     {
       id: 3,
-      icon: <FaHeadset size={30} />,
+      icon: <FaHeadset size={26} />,
       title: "24/7 Support",
       desc: "Get help when you need it",
     },
     {
       id: 4,
-      icon: <FaLock size={30} />,
+      // এখানে আইকন পরিবর্তন করে Shield দেওয়া হয়েছে যা বেশি প্রিমিয়াম লাগে
+      icon: <FaShieldAlt size={26} />, 
       title: "Secure Payment",
       desc: "100% Protected transactions",
     },
   ];
 
   return (
-    <div className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="max-w-screen-xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="py-16 bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-300 font-sans">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map(({ id, icon, title, desc }) => (
-          <div key={id} className="flex items-center gap-4 p-6 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:-translate-y-1 duration-300 cursor-pointer group">
-            <div className="p-3 bg-white dark:bg-gray-700 rounded-full text-orange-600 shadow-sm group-hover:scale-110 duration-300">
+          <div 
+            key={id} 
+            className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-white/5 border border-orange-100/60 dark:border-white/10 hover:border-orange-300 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-900/5 transition-all duration-300 cursor-default group"
+          >
+            {/* Icon Box */}
+            <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
               {icon}
             </div>
+            
+            {/* Text Content */}
             <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">{title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">{desc}</p>
+                <h3 className="font-serif font-bold text-gray-900 dark:text-white text-lg group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
+                    {title}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-light mt-1">
+                    {desc}
+                </p>
             </div>
           </div>
         ))}
