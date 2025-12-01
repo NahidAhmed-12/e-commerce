@@ -13,7 +13,7 @@ const Categories = () => {
       id: 2, 
       title: "Women's Wear", 
       count: "240+ Items",
-      img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2070&auto=format&fit=crop" 
+      img: "/img.avif" 
     },
     { 
       id: 3, 
