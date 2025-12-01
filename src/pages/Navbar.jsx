@@ -31,7 +31,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল বন্ধ করা (Fix for UX)
+  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল লক করা
   useEffect(() => {
     if (nav) {
       document.body.style.overflow = 'hidden';
@@ -60,8 +60,13 @@ const Navbar = () => {
 
   return (
     <>
+      {/* 
+        Navbar Container 
+        z-index 50 রাখা হয়েছে যাতে এটি পেজের কন্টেন্টের উপরে থাকে, 
+        কিন্তু মোবাইল মেনু (z-150) এর নিচে থাকে।
+      */}
       <nav 
-        className={`fixed w-full top-0 z-[100] transition-all duration-300 border-b 
+        className={`fixed w-full top-0 z-50 transition-all duration-300 border-b 
         ${scrolled 
           ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-md border-gray-200 dark:border-gray-800 py-3' 
           : 'bg-transparent border-transparent py-5' 
@@ -70,7 +75,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           
           {/* Logo Section */}
-          <div className="flex items-center gap-2 cursor-pointer group z-[110]">
+          <div className="flex items-center gap-2 cursor-pointer group">
             <span className="w-8 h-8 md:w-9 md:h-9 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white font-serif font-bold text-lg md:text-xl shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition-transform duration-300">
                 S
             </span>
@@ -97,14 +102,11 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Right Icons Area (Desktop) */}
+          {/* Right Icons (Desktop) */}
           <div className="hidden md:flex items-center gap-4">
-            
-            {/* Improved Theme Toggle Button */}
             <button 
               onClick={toggleTheme} 
               className="relative p-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-yellow-400 hover:border-orange-500 hover:text-orange-600 transition-all duration-300 overflow-hidden"
-              title="Toggle Theme"
             >
               <div className={`transition-transform duration-500 ${theme === 'dark' ? 'rotate-180' : 'rotate-0'}`}>
                  {theme === 'dark' ? <FaSun size={16} /> : <FaMoon size={16} />}
@@ -129,14 +131,12 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Buttons Area */}
-          <div className="md:hidden flex items-center gap-4 z-[110]">
-             {/* Mobile Theme Toggle */}
+          {/* Mobile Buttons */}
+          <div className="md:hidden flex items-center gap-4">
              <button onClick={toggleTheme} className="text-gray-600 dark:text-gray-300 p-1">
                 {theme === 'dark' ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} />}
              </button>
 
-             {/* Mobile Cart */}
              <button onClick={() => setIsCartOpen(true)} className="relative p-1 text-gray-800 dark:text-white">
                 <FaShoppingCart size={22} />
                 {getCartCount() > 0 && (
@@ -146,7 +146,6 @@ const Navbar = () => {
                 )}
              </button>
 
-             {/* Mobile Hamburger */}
             <button 
                 onClick={() => setNav(true)} 
                 className="p-2 text-gray-800 dark:text-white focus:outline-none active:scale-90 transition-transform"
@@ -155,70 +154,75 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-
-        {/* ============================== */}
-        {/* NEW IMPROVED MOBILE MENU (Drawer) */}
-        {/* ============================== */}
-        
-        {/* Overlay Backdrop */}
-        <div 
-            className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[150] transition-opacity duration-300 md:hidden
-            ${nav ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
-            onClick={() => setNav(false)}
-        />
-
-        {/* Side Drawer Menu */}
-        <div 
-            className={`fixed top-0 right-0 w-[80%] max-w-[300px] h-full bg-white dark:bg-zinc-900 shadow-2xl z-[160] transform transition-transform duration-300 ease-out md:hidden flex flex-col border-l border-gray-200 dark:border-gray-800
-            ${nav ? 'translate-x-0' : 'translate-x-full'}`}
-        >
-            {/* Drawer Header */}
-            <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-800">
-                <span className="font-serif font-bold text-xl text-gray-800 dark:text-white">Menu</span>
-                <button 
-                    onClick={() => setNav(false)} 
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
-                >
-                    <FaTimes size={18} />
-                </button>
-            </div>
-
-            {/* Links */}
-            <div className="flex-1 overflow-y-auto py-4 px-6 space-y-2">
-                {links.map(({ id, link, href }) => (
-                <a 
-                    key={id}
-                    onClick={() => setNav(false)} 
-                    href={`#${href}`}
-                    className="flex items-center justify-between p-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-orange-50 dark:hover:bg-white/5 hover:text-orange-600 dark:hover:text-orange-400 transition-all group"
-                >
-                    <span className="text-lg">{link}</span>
-                    <FaArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-orange-500" />
-                </a>
-                ))}
-            </div>
-            
-            {/* Drawer Footer */}
-            <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/50 space-y-4">
-                <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
-                        <FaUser />
-                    </div>
-                    <div>
-                        <p className="text-sm font-bold text-gray-800 dark:text-white">My Account</p>
-                        <p className="text-xs text-gray-500">View Profile</p>
-                    </div>
-                </div>
-
-                <button 
-                    onClick={toggleTheme} 
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:border-orange-500 transition-colors"
-                >
-                    {theme === 'dark' ? <><FaSun className="text-yellow-500"/> Light Mode</> : <><FaMoon className="text-gray-600"/> Dark Mode</>}
-                </button>
-            </div>
-        </div>
       </nav>
+
+      {/* ============================== */}
+      {/* MOBILE MENU (FIXED OUTSIDE NAV FLOW) */}
+      {/* ============================== */}
+      {/* 
+         FIX: 'h-screen' ব্যবহার করা হয়েছে 'h-full' এর বদলে।
+         এটি নিশ্চিত করে যে মেনু সবসময় ভিউপোর্টের সমান উচ্চতা পাবে।
+         z-index 150 দেওয়া হয়েছে যাতে এটি Nav (z-50) এর উপরে থাকে।
+      */}
+      
+      {/* Overlay Backdrop */}
+      <div 
+          className={`fixed inset-0 h-screen w-full bg-black/60 backdrop-blur-sm z-[140] transition-opacity duration-300 md:hidden
+          ${nav ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+          onClick={() => setNav(false)}
+      />
+
+      {/* Side Drawer Menu */}
+      <div 
+          className={`fixed top-0 right-0 w-[80%] max-w-[300px] h-screen bg-white dark:bg-zinc-900 shadow-2xl z-[150] transform transition-transform duration-300 ease-out md:hidden flex flex-col border-l border-gray-200 dark:border-gray-800
+          ${nav ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+          {/* Drawer Header */}
+          <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-800 min-h-[80px]">
+              <span className="font-serif font-bold text-xl text-gray-800 dark:text-white">Menu</span>
+              <button 
+                  onClick={() => setNav(false)} 
+                  className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
+              >
+                  <FaTimes size={18} />
+              </button>
+          </div>
+
+          {/* Links Area (Scrollable) */}
+          <div className="flex-1 overflow-y-auto py-4 px-6 space-y-2">
+              {links.map(({ id, link, href }) => (
+              <a 
+                  key={id}
+                  onClick={() => setNav(false)} 
+                  href={`#${href}`}
+                  className="flex items-center justify-between p-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-orange-50 dark:hover:bg-white/5 hover:text-orange-600 dark:hover:text-orange-400 transition-all group"
+              >
+                  <span className="text-lg">{link}</span>
+                  <FaArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-orange-500" />
+              </a>
+              ))}
+          </div>
+          
+          {/* Drawer Footer */}
+          <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/50 space-y-4 mb-safe">
+              <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                      <FaUser />
+                  </div>
+                  <div>
+                      <p className="text-sm font-bold text-gray-800 dark:text-white">My Account</p>
+                      <p className="text-xs text-gray-500">View Profile</p>
+                  </div>
+              </div>
+
+              <button 
+                  onClick={toggleTheme} 
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:border-orange-500 transition-colors"
+              >
+                  {theme === 'dark' ? <><FaSun className="text-yellow-500"/> Light Mode</> : <><FaMoon className="text-gray-600"/> Dark Mode</>}
+              </button>
+          </div>
+      </div>
 
       <CartSidebar onCheckout={handleCheckoutOpen} />
       <Checkout isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
