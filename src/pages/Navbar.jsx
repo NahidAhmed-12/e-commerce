@@ -31,7 +31,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল লক করা
+  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল লক
   useEffect(() => {
     if (nav) {
       document.body.style.overflow = 'hidden';
@@ -61,15 +61,14 @@ const Navbar = () => {
   return (
     <>
       {/* 
-        Navbar Container 
-        z-index 50 রাখা হয়েছে যাতে এটি পেজের কন্টেন্টের উপরে থাকে, 
-        কিন্তু মোবাইল মেনু (z-150) এর নিচে থাকে।
+         Navbar Container 
+         পরিবর্তন: স্ক্রল ছাড়াও এখন হালকা ব্যাকগ্রাউন্ড, ব্লার এবং বর্ডার থাকবে।
       */}
       <nav 
         className={`fixed w-full top-0 z-50 transition-all duration-300 border-b 
         ${scrolled 
-          ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-md border-gray-200 dark:border-gray-800 py-3' 
-          : 'bg-transparent border-transparent py-5' 
+          ? 'bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-md border-gray-200 dark:border-gray-800 py-3' // স্ক্রল করলে
+          : 'bg-white/60 dark:bg-black/40 backdrop-blur-md border-gray-200/50 dark:border-white/10 shadow-sm py-4' // শুরুতে (Glass Effect)
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
@@ -106,7 +105,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             <button 
               onClick={toggleTheme} 
-              className="relative p-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-yellow-400 hover:border-orange-500 hover:text-orange-600 transition-all duration-300 overflow-hidden"
+              className="relative p-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50 text-gray-600 dark:text-yellow-400 hover:border-orange-500 hover:text-orange-600 transition-all duration-300 overflow-hidden"
             >
               <div className={`transition-transform duration-500 ${theme === 'dark' ? 'rotate-180' : 'rotate-0'}`}>
                  {theme === 'dark' ? <FaSun size={16} /> : <FaMoon size={16} />}
@@ -156,28 +155,17 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* ============================== */}
-      {/* MOBILE MENU (FIXED OUTSIDE NAV FLOW) */}
-      {/* ============================== */}
-      {/* 
-         FIX: 'h-screen' ব্যবহার করা হয়েছে 'h-full' এর বদলে।
-         এটি নিশ্চিত করে যে মেনু সবসময় ভিউপোর্টের সমান উচ্চতা পাবে।
-         z-index 150 দেওয়া হয়েছে যাতে এটি Nav (z-50) এর উপরে থাকে।
-      */}
-      
-      {/* Overlay Backdrop */}
+      {/* Mobile Drawer (No Changes needed here, kept for completeness) */}
       <div 
           className={`fixed inset-0 h-screen w-full bg-black/60 backdrop-blur-sm z-[140] transition-opacity duration-300 md:hidden
           ${nav ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
           onClick={() => setNav(false)}
       />
 
-      {/* Side Drawer Menu */}
       <div 
           className={`fixed top-0 right-0 w-[80%] max-w-[300px] h-screen bg-white dark:bg-zinc-900 shadow-2xl z-[150] transform transition-transform duration-300 ease-out md:hidden flex flex-col border-l border-gray-200 dark:border-gray-800
           ${nav ? 'translate-x-0' : 'translate-x-full'}`}
       >
-          {/* Drawer Header */}
           <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-800 min-h-[80px]">
               <span className="font-serif font-bold text-xl text-gray-800 dark:text-white">Menu</span>
               <button 
@@ -188,7 +176,6 @@ const Navbar = () => {
               </button>
           </div>
 
-          {/* Links Area (Scrollable) */}
           <div className="flex-1 overflow-y-auto py-4 px-6 space-y-2">
               {links.map(({ id, link, href }) => (
               <a 
@@ -203,7 +190,6 @@ const Navbar = () => {
               ))}
           </div>
           
-          {/* Drawer Footer */}
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/50 space-y-4 mb-safe">
               <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
