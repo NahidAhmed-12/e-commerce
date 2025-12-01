@@ -7,25 +7,25 @@ const Categories = () => {
       id: 1, 
       title: "Men's Fashion", 
       count: "120+ Items",
-      img: "public/Categories/Male.avif" 
+      img: "/Categories/Male.avif" 
     },
     { 
       id: 2, 
       title: "Women's Wear", 
       count: "240+ Items",
-      img: "public/Categories/Female.avif", 
+      img: "/Categories/Female.avif", 
     },
     { 
       id: 3, 
       title: "Sneakers", 
       count: "85+ Items",
-      img: "public/Categories/Sneakers.avif" 
+      img: "/Categories/Sneakers.avif" 
     },
     { 
       id: 4, 
       title: "Accessories", 
       count: "60+ Items",
-      img: "public/Categories/Accessories.avif" 
+      img: "/Categories/Accessories.avif" 
     },
   ];
 

@@ -73,7 +73,7 @@ const ExclusiveDeal = () => {
             <div className="relative z-10 transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-105">
                 {/* Image Fixed: Added fixed height and object-cover */}
                 <img 
-                    src="public/Exclusive/Exclusive.avif" 
+                    src="/Exclusive/Exclusive.avif" 
                     alt="Exclusive Deal" 
                     className="w-full max-w-[500px] h-[400px] md:h-[550px] object-cover rounded-3xl shadow-2xl shadow-orange-900/20 rotate-[-5deg] group-hover:rotate-0 transition-all duration-700 ease-in-out"
                 />
