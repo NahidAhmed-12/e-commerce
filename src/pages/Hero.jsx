@@ -4,19 +4,19 @@ import React, { useState, useEffect } from 'react';
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop",
+    image: "/img-1.avif",
     title: "Summer Luxe",
     subtitle: "SS/24 Collection"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2070&auto=format&fit=crop",
+    image: "/img-2.avif",
     title: "Urban Vogue",
     subtitle: "New Arrivals"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1589212987511-4a924cb9d8ac?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/img-3.avif",
     title: "Classic Aura",
     subtitle: "Timeless Series"
   }
