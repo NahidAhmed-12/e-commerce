@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-// স্লাইডারের ডেটা
 const slides = [
   {
     id: 1,
-    image: "/img-1.avif",
+    image: "/Hero/img-1.avif",
     title: "Summer Luxe",
     subtitle: "SS/24 Collection"
   },
   {
     id: 2,
-    image: "/img-2.jpg",
+    image: "/Hero/img-2.avif",
     title: "Urban Vogue",
     subtitle: "New Arrivals"
   },
   {
     id: 3,
-    image: "/img-3.jpg",
+    image: "/Hero/img-3.avif",
     title: "Classic Aura",
     subtitle: "Timeless Series"
   },
   {
-    id: 3,
-    image: "/img-4.jpg",
+    id: 4, // Unique ID maintained
+    image: "/Hero/img-4.avif",
     title: "Classic Aura",
     subtitle: "Timeless Series"
   }
@@ -31,10 +30,8 @@ const slides = [
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
-  // ✨ অটোমেটিক বর্তমান বছর বের করা
   const currentYear = new Date().getFullYear();
 
-  // অটো স্লাইড ৫ সেকেন্ড পর পর
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -50,11 +47,11 @@ const Hero = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
-  // ✨ প্রোডাক্ট সেকশনে স্ক্রল করার ফাংশন
   const scrollToProducts = () => {
-    const productSection = document.getElementsByName('products'); // আপনার Product সেকশনে id="products" থাকতে হবে
-    if (productSection) {
-      productSection.scrollIntoView({ behavior: 'smooth' });
+    // Scroll logic maintained for name="products"
+    const productElements = document.getElementsByName('products');
+    if (productElements.length > 0) {
+      productElements[0].scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -77,7 +74,6 @@ const Hero = () => {
             <div className="flex items-center justify-center lg:justify-start gap-3">
                 <span className="w-8 h-[2px] bg-orange-500 inline-block"></span>
                 <p className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-xs uppercase">
-                {/* ✨ এখানে অটোমেটিক বর্তমান বছর আসবে */}
                 Est. {currentYear} Fashion
                 </p>
             </div>
@@ -171,8 +167,24 @@ const Hero = () => {
                     </div>
                 </div>
                 ))}
+                
+                {/* ⬇️ Slider Navigation Indicators (Dots) Added Here ⬇️ */}
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                    {slides.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        currentSlide === index 
+                            ? 'w-6 bg-orange-500' 
+                            : 'w-2 bg-white/50 hover:bg-white'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                    ))}
+                </div>
 
-                <div className="absolute bottom-6 right-6 flex items-center gap-3">
+                <div className="absolute bottom-6 right-6 flex items-center gap-3 z-20">
                    <button onClick={prevSlide} className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all border border-white/10">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                    </button>

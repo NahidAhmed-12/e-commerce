@@ -7,25 +7,25 @@ const Categories = () => {
       id: 1, 
       title: "Men's Fashion", 
       count: "120+ Items",
-      img: "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?q=80&w=2071&auto=format&fit=crop" 
+      img: "public/Categories/Male.avif" 
     },
     { 
       id: 2, 
       title: "Women's Wear", 
       count: "240+ Items",
-      img: "/img.avif" 
+      img: "public/Categories/Female.avif", 
     },
     { 
       id: 3, 
       title: "Sneakers", 
       count: "85+ Items",
-      img: "https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop" 
+      img: "public/Categories/Sneakers.avif" 
     },
     { 
       id: 4, 
       title: "Accessories", 
       count: "60+ Items",
-      img: "https://images.unsplash.com/photo-1576053139778-7e32f2ae3cfd?q=80&w=2070&auto=format&fit=crop" 
+      img: "public/Categories/Accessories.avif" 
     },
   ];
 
