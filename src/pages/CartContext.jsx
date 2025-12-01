@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const [isCartOpen, setIsCartOpen] = useState(false); // কার্ট সাইডবার খোলার জন্য স্টেট
+  const [isCartOpen, setIsCartOpen] = useState(false); 
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
             : item
         );
       } else {
-        setIsCartOpen(true); // অটোমেটিক কার্ট ওপেন হবে অ্যাড করলে (অপশনাল)
+        setIsCartOpen(true);
         return [...prevItems, { ...product, quantity, selectedColor: color, selectedSize: size }];
       }
     });

@@ -20,7 +20,7 @@ const slides = [
     subtitle: "Timeless Series"
   },
   {
-    id: 4, // Unique ID maintained
+    id: 4,
     image: "/Hero/img-4.avif",
     title: "Classic Aura",
     subtitle: "Timeless Series"
@@ -48,7 +48,7 @@ const Hero = () => {
   };
 
   const scrollToProducts = () => {
-    // Scroll logic maintained for name="products"
+   
     const productElements = document.getElementsByName('products');
     if (productElements.length > 0) {
       productElements[0].scrollIntoView({ behavior: 'smooth' });
@@ -109,7 +109,7 @@ const Hero = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8 relative z-10">
             
-            {/* ✨ Primary Button with Scroll Function */}
+         
             <button 
               onClick={scrollToProducts}
               className="group flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-600 text-white rounded-lg text-sm font-bold tracking-wide hover:bg-orange-700 transition-all duration-300 shadow-lg shadow-orange-600/30 transform hover:-translate-y-0.5"
@@ -143,7 +143,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side: Image Slider + Animated Rings */}
+
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
           
           {/* Animated Background Rings */}

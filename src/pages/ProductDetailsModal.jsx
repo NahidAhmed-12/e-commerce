@@ -64,8 +64,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
           <FaTimes size={20} className="text-white sm:text-gray-800 dark:text-white group-hover:text-white transition-transform duration-300 group-hover:rotate-90" />
         </button>
 
-        {/* --- Left Side: Gallery Section --- */}
-        {/* z-0 ensures it stays behind. sticky top-0 creates the parallax effect */}
+
         <div className="w-full h-[65vh] sm:h-auto sm:w-1/2 lg:w-[45%] bg-gray-100 sm:bg-white/50 dark:bg-white/5 sticky top-0 sm:relative flex flex-col items-center justify-center p-0 sm:p-6 lg:p-10 shrink-0 z-0 sm:z-auto">
             
             {/* Main Image */}
@@ -98,9 +97,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
             </div>
         </div>
 
-        {/* --- Right Side: Content Section --- */}
-        {/* FIX: min-h-screen added to ensure background covers the sticky image completely when scrolling down. 
-            bg-[#FFFBF7] (solid color) ensures opacity. */}
+
         <div className="w-full sm:w-1/2 lg:w-[55%] relative z-30 bg-[#FFFBF7] dark:bg-[#0f0f0f] -mt-8 sm:mt-0 rounded-t-[2rem] sm:rounded-none px-6 py-8 sm:p-12 overflow-visible sm:overflow-y-auto scrollbar-thin scrollbar-thumb-orange-200 dark:scrollbar-thumb-orange-900 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] sm:shadow-none min-h-screen sm:min-h-0">
             
             {/* Mobile Drag Indicator */}

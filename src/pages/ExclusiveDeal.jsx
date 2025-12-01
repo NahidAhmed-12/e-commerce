@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 const ExclusiveDeal = () => {
-  // কাউন্টডাউন টাইমার স্টেট
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -11,7 +11,7 @@ const ExclusiveDeal = () => {
   });
 
   useEffect(() => {
-    // উদাহরণস্বরূপ: বর্তমান সময় থেকে ২ দিন পরের সময় সেট করা হলো
+   
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 2); 
 
@@ -34,7 +34,7 @@ const ExclusiveDeal = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // সংখ্যা ২ ডিজিটে দেখানোর জন্য (যেমন: ৯ এর বদলে ০৯)
+
   const formatTime = (time) => {
     return time < 10 ? `0${time}` : time;
   };
@@ -47,7 +47,7 @@ const ExclusiveDeal = () => {
   ];
 
   return (
-    // এই সেকশনটি সবসময় ডার্ক থাকবে (Luxury Feel এর জন্য)
+ 
     <section className="w-full py-24 bg-[#0a0a0a] relative overflow-hidden font-sans">
       
       {/* Background Elements (Atmospheric Glow) */}

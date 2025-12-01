@@ -11,7 +11,6 @@ const Navbar = () => {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false); 
   const { getCartCount, setIsCartOpen } = useCart();
 
-  // থিম সেটআপ
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -22,7 +21,7 @@ const Navbar = () => {
     }
   }, [theme]);
 
-  // স্ক্রল ডিটেকশন
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -31,7 +30,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল লক
+  
   useEffect(() => {
     if (nav) {
       document.body.style.overflow = 'hidden';
@@ -60,10 +59,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* 
-         Navbar Container 
-         পরিবর্তন: স্ক্রল ছাড়াও এখন হালকা ব্যাকগ্রাউন্ড, ব্লার এবং বর্ডার থাকবে।
-      */}
+ 
       <nav 
         className={`fixed w-full top-0 z-50 transition-all duration-300 border-b 
         ${scrolled 
@@ -155,7 +151,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Drawer (No Changes needed here, kept for completeness) */}
+   
       <div 
           className={`fixed inset-0 h-screen w-full bg-black/60 backdrop-blur-sm z-[140] transition-opacity duration-300 md:hidden
           ${nav ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}

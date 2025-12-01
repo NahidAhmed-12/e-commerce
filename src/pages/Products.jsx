@@ -3,7 +3,7 @@ import { FaStar, FaHeart, FaEye, FaPlus } from 'react-icons/fa';
 import ProductDetailsModal from './ProductDetailsModal';
 import { useCart } from './CartContext'; 
 
-// ১. বেস ডাটা (অপরিবর্তিত)
+
 const baseProducts = [
   { name: 'Nike Air Max', category: 'Shoes', basePrice: 120, img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop' },
   { name: 'Urban Trench Coat', category: 'Clothes', basePrice: 180, img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop' },
@@ -19,7 +19,6 @@ const baseProducts = [
   { name: 'Mechanical Keyboard', category: 'Electronics', basePrice: 110, img: 'https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=2071&auto=format&fit=crop' },
 ];
 
-// ২. র‍্যান্ডমাইজেশন ফাংশন (অপরিবর্তিত)
 const generateRandomBatch = (startId, count) => {
   let batch = [];
   const shuffledBase = [...baseProducts].sort(() => 0.5 - Math.random());
@@ -126,7 +125,7 @@ const Products = () => {
                     )}
                 </div>
 
-                {/* Desktop Hover Actions (Hidden on mobile usually) */}
+             
                 <div className="absolute top-3 right-3 flex flex-col gap-2 translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-out hidden md:flex">
                     <button onClick={(e) => { e.stopPropagation(); setSelectedProduct(product); }} className="w-9 h-9 flex items-center justify-center bg-white text-gray-800 rounded-full shadow-lg hover:bg-orange-600 hover:text-white transition-colors"><FaEye size={14}/></button>
                     <button className="w-9 h-9 flex items-center justify-center bg-white text-gray-800 rounded-full shadow-lg hover:bg-orange-600 hover:text-white transition-colors"><FaHeart size={14}/></button>
@@ -140,16 +139,16 @@ const Products = () => {
                 </button>
               </div>
 
-              {/* --------------- FIX STARTS HERE (Product Info) --------------- */}
+             
               
-              <div className="mt-3 text-left"> {/* text-center সরিয়ে text-left দেওয়া হয়েছে */}
+              <div className="mt-3 text-left">
                 
                 {/* Category & Rating Row */}
                 <div className="flex justify-between items-center mb-1">
                     <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest truncate">
                         {product.category}
                     </p>
-                    {/* Rating এখন সব স্ক্রিনেই দেখা যাবে */}
+                
                     <div className="flex items-center gap-1 text-[10px] md:text-xs text-orange-500 bg-orange-50 dark:bg-orange-900/20 px-1.5 py-0.5 rounded">
                         <FaStar size={10} /> {product.rating}
                     </div>
@@ -169,9 +168,7 @@ const Products = () => {
                 </div>
 
               </div>
-              
-              {/* --------------- FIX ENDS HERE --------------- */}
-
+      
             </div>
           ))}
         </div>

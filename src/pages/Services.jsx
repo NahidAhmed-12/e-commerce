@@ -1,5 +1,5 @@
 import React from 'react';
-// FaLock এর বদলে FaShieldAlt ইম্পোর্ট করা হয়েছে
+
 import { FaShippingFast, FaHeadset, FaMoneyBillWave, FaShieldAlt } from 'react-icons/fa';
 
 const Services = () => {
@@ -24,7 +24,7 @@ const Services = () => {
     },
     {
       id: 4,
-      // এখানে আইকন পরিবর্তন করে Shield দেওয়া হয়েছে যা বেশি প্রিমিয়াম লাগে
+ 
       icon: <FaShieldAlt size={26} />, 
       title: "Secure Payment",
       desc: "100% Protected transactions",

@@ -14,30 +14,21 @@ import Footer from './pages/Footer';
 function App() {
   return (
     <div className="font-sans">
-      {/* ১. ন্যাভিগেশন বার */}
+      
       <Navbar />
-
-      {/* ২. হিরো সেকশন (ব্যানার) */}
+  
       <Hero />
 
-      {/* ৩. সার্ভিস সেকশন (ফিচার) */}
       <Services />
 
-      {/* ৪. ক্যাটাগরি সেকশন */}
       <Categories />
 
-      {/* ৫. প্রোডাক্ট লিস্ট */}
       <Products />
 
-      {/* ৬. এক্সক্লুসিভ ডিল (বড় অফার) */}
       <ExclusiveDeal />
 
-      {/* ৭. কাস্টমার রিভিউ */}
       <Testimonials />
 
-  
-
-      {/* ৯. ফুটার */}
       <Footer />
     </div>
   );

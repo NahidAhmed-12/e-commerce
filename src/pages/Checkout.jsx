@@ -10,7 +10,7 @@ const Checkout = ({ isOpen, onClose }) => {
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [isSummaryOpen, setIsSummaryOpen] = useState(false); // Mobile dropdown toggle state
 
-  // পেছনের বডি স্ক্রল বন্ধ করা
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -33,12 +33,7 @@ const Checkout = ({ isOpen, onClose }) => {
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
       ></div>
 
-      {/* Main Modal Container */}
-      {/* Desktop: Row, Mobile: Column (Form on Top, Summary on Bottom) */}
       <div className="relative w-full h-[95vh] md:h-[90vh] md:max-w-6xl bg-white dark:bg-[#1a1a1a] rounded-t-2xl md:rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden font-sans transform transition-all">
-        
-        {/* --- PART 1: CHECKOUT DETAILS FORM (Top/Left) --- */}
-        {/* 'flex-1' ensures it takes all available space above the bottom bar */}
         <div className="flex-1 w-full h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 bg-white dark:bg-[#1a1a1a]">
            <div className="p-6 md:p-10 pb-4">
                
@@ -156,13 +151,10 @@ const Checkout = ({ isOpen, onClose }) => {
            </div>
         </div>
 
-        {/* --- PART 2: ORDER SUMMARY (Bottom/Right) --- */}
-        {/* On Mobile: This sits at the bottom. The list is collapsible. The total is always visible. */}
+       
         <div className="w-full md:w-1/3 bg-gray-50 dark:bg-[#121212] md:border-l border-t md:border-t-0 border-gray-200 dark:border-gray-800 flex flex-col flex-shrink-0 z-20 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] md:shadow-none">
            
-           {/* 1. Mobile Toggle Header */}
-           {/* This is the bar you click to show the items */}
-           <div 
+     <div 
              className="md:hidden px-6 py-3 bg-gray-100 dark:bg-[#1f1f1f] border-b border-gray-200 dark:border-gray-700 flex justify-between items-center cursor-pointer select-none"
              onClick={() => setIsSummaryOpen(!isSummaryOpen)}
            >
@@ -180,8 +172,6 @@ const Checkout = ({ isOpen, onClose }) => {
               <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white">Order Summary</h3>
            </div>
 
-           {/* 2. Product List (Collapsible on Mobile) */}
-           {/* 'h-0' when closed on mobile, 'h-auto max-h-[30vh]' when open. Always visible on desktop. */}
            <div className={`overflow-y-auto bg-gray-50 dark:bg-[#121212] transition-all duration-300 ease-in-out scrollbar-thin ${
                isSummaryOpen ? 'h-48 border-b border-gray-200 dark:border-gray-800' : 'h-0'
            } md:h-full md:border-none p-0 md:p-8`}>
