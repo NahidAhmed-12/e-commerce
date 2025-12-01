@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaShoppingCart, FaBars, FaTimes, FaSun, FaMoon, FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaBars, FaTimes, FaSun, FaMoon, FaUser, FaArrowRight } from 'react-icons/fa';
 import { useCart } from './CartContext'; 
 import CartSidebar from './CartSidebar'; 
 import Checkout from './Checkout';       
@@ -22,7 +22,7 @@ const Navbar = () => {
     }
   }, [theme]);
 
-  // স্ক্রল ডিটেকশন (শুধু শ্যাডো বা অপাসিটি বাড়ানোর জন্য)
+  // স্ক্রল ডিটেকশন
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -30,6 +30,15 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // মোবাইল মেনু ওপেন থাকলে বডি স্ক্রল বন্ধ করা (Fix for UX)
+  useEffect(() => {
+    if (nav) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [nav]);
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -52,30 +61,29 @@ const Navbar = () => {
   return (
     <>
       <nav 
-        // পরিবর্তন এখানে: শুরু থেকেই ব্যাকগ্রাউন্ড কালার এবং ব্লার দেওয়া হয়েছে
-        className={`fixed w-full top-0 z-50 transition-all duration-300 border-b 
+        className={`fixed w-full top-0 z-[100] transition-all duration-300 border-b 
         ${scrolled 
-          ? 'bg-white/95 dark:bg-black/95 shadow-md border-gray-200 dark:border-gray-800 py-4' // স্ক্রল করলে সলিড কালার হবে
-          : 'bg-white/70 dark:bg-black/60 backdrop-blur-xl border-orange-100/50 dark:border-white/10 py-5' // শুরুতে গ্লাস ইফেক্ট এবং হালকা বর্ডার
+          ? 'bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-md border-gray-200 dark:border-gray-800 py-3' 
+          : 'bg-transparent border-transparent py-5' 
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
           
           {/* Logo Section */}
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <span className="w-9 h-9 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-serif font-bold text-xl shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition-transform duration-300">
+          <div className="flex items-center gap-2 cursor-pointer group z-[110]">
+            <span className="w-8 h-8 md:w-9 md:h-9 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white font-serif font-bold text-lg md:text-xl shadow-lg shadow-orange-500/30 group-hover:rotate-6 transition-transform duration-300">
                 S
             </span>
             <div className="flex flex-col">
-                <h1 className="text-xl font-serif font-bold text-gray-900 dark:text-white tracking-wide leading-none">
+                <h1 className="text-lg md:text-xl font-serif font-bold text-gray-900 dark:text-white tracking-wide leading-none">
                 ShopVerse
                 </h1>
-                <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-medium">Premium Store</span>
+                <span className="text-[9px] md:text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-medium">Premium Store</span>
             </div>
           </div>
 
-          {/* Desktop Menu - Distinct Links */}
-          <ul className="hidden md:flex items-center gap-10">
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex items-center gap-8 lg:gap-10">
             {links.map(({ id, link, href }) => (
               <li key={id} className="relative group">
                 <a 
@@ -84,35 +92,36 @@ const Navbar = () => {
                 >
                   {link}
                 </a>
-                {/* Active/Hover Indicator */}
                 <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-orange-600 group-hover:w-full transition-all duration-300"></span>
               </li>
             ))}
           </ul>
 
-          {/* Right Icons Area */}
-          <div className="hidden md:flex items-center gap-5">
+          {/* Right Icons Area (Desktop) */}
+          <div className="hidden md:flex items-center gap-4">
             
+            {/* Improved Theme Toggle Button */}
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-yellow-400 transition-all"
+              className="relative p-2 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-yellow-400 hover:border-orange-500 hover:text-orange-600 transition-all duration-300 overflow-hidden"
+              title="Toggle Theme"
             >
-              {theme === 'dark' ? <FaSun size={18} /> : <FaMoon size={18} />}
+              <div className={`transition-transform duration-500 ${theme === 'dark' ? 'rotate-180' : 'rotate-0'}`}>
+                 {theme === 'dark' ? <FaSun size={16} /> : <FaMoon size={16} />}
+              </div>
             </button>
 
-            <button className="p-2 rounded-lg text-gray-600 hover:bg-orange-50 hover:text-orange-600 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white transition-all">
+            <button className="p-2 rounded-lg text-gray-600 hover:text-orange-600 dark:text-gray-300 dark:hover:text-white transition-all">
                 <FaUser size={18} />
             </button>
 
-            {/* Vertical Divider for separation */}
-            <div className="h-8 w-[1px] bg-gray-300 dark:bg-white/10"></div>
+            <div className="h-6 w-[1px] bg-gray-300 dark:bg-gray-700"></div>
 
-            {/* Cart Button - High Contrast */}
             <button 
               onClick={() => setIsCartOpen(true)} 
-              className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-orange-600 dark:hover:bg-orange-500 dark:hover:text-white transition-all duration-300 shadow-lg hover:shadow-orange-500/20 active:scale-95"
+              className="group flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-orange-600 dark:hover:bg-orange-500 dark:hover:text-white transition-all duration-300 shadow-md active:scale-95"
             >
-              <FaShoppingCart size={16} />
+              <FaShoppingCart size={14} />
               <span className="text-xs font-bold tracking-wider">CART</span>
               <span className="flex items-center justify-center w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full">
                 {getCartCount()}
@@ -120,48 +129,94 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center gap-4">
-             <button onClick={() => setIsCartOpen(true)} className="relative p-2 text-gray-800 dark:text-white">
-                <FaShoppingCart size={24} />
-                <span className="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white dark:border-black">
-                    {getCartCount()}
-                </span>
+          {/* Mobile Buttons Area */}
+          <div className="md:hidden flex items-center gap-4 z-[110]">
+             {/* Mobile Theme Toggle */}
+             <button onClick={toggleTheme} className="text-gray-600 dark:text-gray-300 p-1">
+                {theme === 'dark' ? <FaSun size={20} className="text-yellow-400" /> : <FaMoon size={20} />}
              </button>
 
-            <button onClick={() => setNav(true)} className="p-2 text-gray-800 dark:text-white">
+             {/* Mobile Cart */}
+             <button onClick={() => setIsCartOpen(true)} className="relative p-1 text-gray-800 dark:text-white">
+                <FaShoppingCart size={22} />
+                {getCartCount() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white dark:border-black">
+                      {getCartCount()}
+                  </span>
+                )}
+             </button>
+
+             {/* Mobile Hamburger */}
+            <button 
+                onClick={() => setNav(true)} 
+                className="p-2 text-gray-800 dark:text-white focus:outline-none active:scale-90 transition-transform"
+            >
                <FaBars size={24} />
             </button>
           </div>
         </div>
 
-        {/* Mobile Full Screen Menu Overlay */}
+        {/* ============================== */}
+        {/* NEW IMPROVED MOBILE MENU (Drawer) */}
+        {/* ============================== */}
+        
+        {/* Overlay Backdrop */}
         <div 
-            className={`fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-xl z-[60] flex flex-col justify-center items-center transition-all duration-500 ease-in-out ${
-                nav ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-5'
-            }`}
-        >
-            <button onClick={() => setNav(false)} className="absolute top-6 right-6 p-2 text-gray-800 dark:text-white hover:text-orange-600 transition-colors">
-                <FaTimes size={32} />
-            </button>
+            className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[150] transition-opacity duration-300 md:hidden
+            ${nav ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+            onClick={() => setNav(false)}
+        />
 
-            <div className="space-y-8 text-center">
+        {/* Side Drawer Menu */}
+        <div 
+            className={`fixed top-0 right-0 w-[80%] max-w-[300px] h-full bg-white dark:bg-zinc-900 shadow-2xl z-[160] transform transition-transform duration-300 ease-out md:hidden flex flex-col border-l border-gray-200 dark:border-gray-800
+            ${nav ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+            {/* Drawer Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-800">
+                <span className="font-serif font-bold text-xl text-gray-800 dark:text-white">Menu</span>
+                <button 
+                    onClick={() => setNav(false)} 
+                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
+                >
+                    <FaTimes size={18} />
+                </button>
+            </div>
+
+            {/* Links */}
+            <div className="flex-1 overflow-y-auto py-4 px-6 space-y-2">
                 {links.map(({ id, link, href }) => (
-                <div key={id}>
-                    <a 
-                        onClick={() => setNav(false)} 
-                        href={`#${href}`}
-                        className="block text-3xl font-serif font-bold text-gray-900 dark:text-white hover:text-orange-600 transition-colors duration-300"
-                    >
-                        {link}
-                    </a>
-                </div>
+                <a 
+                    key={id}
+                    onClick={() => setNav(false)} 
+                    href={`#${href}`}
+                    className="flex items-center justify-between p-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-orange-50 dark:hover:bg-white/5 hover:text-orange-600 dark:hover:text-orange-400 transition-all group"
+                >
+                    <span className="text-lg">{link}</span>
+                    <FaArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-orange-500" />
+                </a>
                 ))}
             </div>
             
-            <button onClick={toggleTheme} className="absolute bottom-12 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-gray-500 border border-gray-300 dark:border-gray-700 px-8 py-3 rounded-full hover:border-orange-500 transition-colors">
-                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-            </button>
+            {/* Drawer Footer */}
+            <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-zinc-900/50 space-y-4">
+                <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                        <FaUser />
+                    </div>
+                    <div>
+                        <p className="text-sm font-bold text-gray-800 dark:text-white">My Account</p>
+                        <p className="text-xs text-gray-500">View Profile</p>
+                    </div>
+                </div>
+
+                <button 
+                    onClick={toggleTheme} 
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:border-orange-500 transition-colors"
+                >
+                    {theme === 'dark' ? <><FaSun className="text-yellow-500"/> Light Mode</> : <><FaMoon className="text-gray-600"/> Dark Mode</>}
+                </button>
+            </div>
         </div>
       </nav>
 
