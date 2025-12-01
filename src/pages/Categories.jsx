@@ -38,7 +38,8 @@ const Categories = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        {/* FIX: items-end এর বদলে items-center md:items-end দেওয়া হয়েছে */}
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
             <div className="text-center md:text-left">
                 <span className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-xs uppercase">
                     — Curated Collections
