@@ -5,31 +5,42 @@ const slides = [
     id: 1,
     image: "/Hero/img-1.avif",
     title: "Summer Luxe",
-    subtitle: "SS/24 Collection"
+    subtitle: "SS/24 Collection",
+    // Orange/Gold vibes
+    topColor: "rgba(251, 146, 60, 0.2)", 
+    bottomColor: "rgba(234, 88, 12, 0.2)" 
   },
   {
     id: 2,
     image: "/Hero/img-2.avif",
     title: "Urban Vogue",
-    subtitle: "New Arrivals"
+    subtitle: "New Arrivals",
+    // Cyan/Blue vibes
+    topColor: "rgba(34, 211, 238, 0.2)", 
+    bottomColor: "rgba(37, 99, 235, 0.2)" 
   },
   {
     id: 3,
     image: "/Hero/img-3.avif",
     title: "Classic Aura",
-    subtitle: "Timeless Series"
+    subtitle: "Timeless Series",
+    // Purple/Pink vibes
+    topColor: "rgba(232, 121, 249, 0.2)", 
+    bottomColor: "rgba(147, 51, 234, 0.2)" 
   },
   {
     id: 4,
     image: "/Hero/img-4.avif",
-    title: "Classic Aura",
-    subtitle: "Timeless Series"
+    title: "Pristine White",
+    subtitle: "Minimalist Edition",
+    // ✅ Updated: Silver/Gray/White Glow for White Image
+    topColor: "rgba(209, 213, 219, 0.4)", // Light Gray / Silver
+    bottomColor: "rgba(107, 114, 128, 0.3)" // Cool Gray
   }
 ];
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -48,7 +59,6 @@ const Hero = () => {
   };
 
   const scrollToProducts = () => {
-   
     const productElements = document.getElementsByName('products');
     if (productElements.length > 0) {
       productElements[0].scrollIntoView({ behavior: 'smooth' });
@@ -56,32 +66,64 @@ const Hero = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-300 relative overflow-hidden font-sans selection:bg-orange-200 selection:text-orange-900">
+    <div className="w-full min-h-screen bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-500 relative overflow-hidden font-sans selection:bg-orange-200 selection:text-orange-900">
       
-      {/* Background Orbs (Soft Glow) */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-400/10 rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[80px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+      {/* Entry Animations Styles */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInScale {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+        }
+        .animate-fadeInScale {
+          animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+      `}</style>
+
+      {/* Dynamic Background Orbs */}
+      <div 
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3 transition-colors duration-[1500ms] ease-in-out"
+        style={{ backgroundColor: slides[currentSlide].topColor }}
+      ></div>
+      
+      <div 
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-[80px] pointer-events-none -translate-x-1/3 translate-y-1/3 transition-colors duration-[1500ms] ease-in-out"
+        style={{ backgroundColor: slides[currentSlide].bottomColor }}
+      ></div>
 
       {/* Main Wrapper */}
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 py-20 lg:pt-28 gap-12 lg:gap-0 relative z-10">
         
-        {/* Left Side: Elegant Text Content */}
+        {/* Left Side: Content */}
         <div className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left z-20 relative">
           
           <div className="space-y-6 relative z-10">
             
-            {/* Tagline with Dynamic Year */}
-            <div className="flex items-center justify-center lg:justify-start gap-3">
+            {/* Tagline */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 animate-fadeInUp delay-100">
                 <span className="w-8 h-[2px] bg-orange-500 inline-block"></span>
                 <p className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-xs uppercase">
                 Est. {currentYear} Fashion
                 </p>
             </div>
             
-            {/* H1 Title with Star & Brush Stroke */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white leading-[1.2] relative inline-block">
+            {/* H1 Title */}
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white leading-[1.2] relative inline-block animate-fadeInUp delay-200">
               
-              {/* Animated Floating Star */}
+              {/* Star */}
               <svg className="absolute -top-6 -right-8 w-8 h-8 text-orange-400 animate-[spin_4s_linear_infinite]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
               </svg>
@@ -89,27 +131,22 @@ const Hero = () => {
               Elevate Your <br />
               
               <span className="relative inline-block z-10 mt-1">
-                {/* Gradient Text for "Everyday Look" */}
                 <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 z-10 relative px-1 pb-1">
                   Everyday Look
                 </span>
-                
-                {/* Brush Stroke SVG behind text */}
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-orange-500/80 -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.00025 6.99999C45.5002 1.5 130 -2.5 198.5 3.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
                 </svg>
               </span>
             </h1>
             
-            <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
+            <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-light animate-fadeInUp delay-300">
               Curated styles for the modern individual. Experience the perfect blend of comfort and luxury in our latest collection.
             </p>
           </div>
           
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8 relative z-10">
-            
-         
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8 relative z-10 animate-fadeInUp delay-400">
             <button 
               onClick={scrollToProducts}
               className="group flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-600 text-white rounded-lg text-sm font-bold tracking-wide hover:bg-orange-700 transition-all duration-300 shadow-lg shadow-orange-600/30 transform hover:-translate-y-0.5"
@@ -120,7 +157,6 @@ const Hero = () => {
               Shop Collection
             </button>
             
-            {/* Secondary Button */}
             <button className="group flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-orange-100 dark:border-orange-900/50 text-gray-800 dark:text-gray-200 rounded-lg text-sm font-bold tracking-wide hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400 transition-all duration-300 bg-white/50 dark:bg-black/20">
               View Lookbook
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
@@ -130,7 +166,7 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="flex items-center justify-center lg:justify-start gap-8 pt-10 relative z-10">
+          <div className="flex items-center justify-center lg:justify-start gap-8 pt-10 relative z-10 animate-fadeInUp delay-500">
              <div>
                 <p className="text-2xl font-serif text-gray-900 dark:text-white">2k+</p>
                 <p className="text-xs text-orange-500/80 uppercase tracking-wider mt-1">Products</p>
@@ -144,13 +180,14 @@ const Hero = () => {
         </div>
 
 
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative animate-fadeInScale delay-200">
           
           {/* Animated Background Rings */}
           <div className="absolute top-1/2 left-1/2 lg:left-auto lg:right-[190px] -translate-x-1/2 lg:translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 hidden sm:block pointer-events-none">
              <div className="absolute inset-0 border border-dashed border-orange-300 dark:border-orange-800/40 rounded-full animate-[spin_20s_linear_infinite] opacity-40"></div>
              <div className="absolute inset-12 border border-orange-200 dark:border-orange-900/30 rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-60"></div>
-             <div className="absolute inset-20 bg-orange-500/5 dark:bg-orange-500/10 rounded-full blur-2xl animate-pulse"></div>
+             {/* Ring Glow */}
+             <div className="absolute inset-20 rounded-full blur-2xl animate-pulse transition-colors duration-1000" style={{ backgroundColor: slides[currentSlide].topColor }}></div>
           </div>
 
           {/* Image Container */}
@@ -168,7 +205,7 @@ const Hero = () => {
                 </div>
                 ))}
                 
-                {/* ⬇️ Slider Navigation Indicators (Dots) Added Here ⬇️ */}
+                {/* Dots Navigation */}
                 <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
                     {slides.map((_, index) => (
                     <button
@@ -179,7 +216,6 @@ const Hero = () => {
                             ? 'w-6 bg-orange-500' 
                             : 'w-2 bg-white/50 hover:bg-white'
                         }`}
-                        aria-label={`Go to slide ${index + 1}`}
                     />
                     ))}
                 </div>
