@@ -2,8 +2,8 @@
 
 A premium, fully responsive, and highly interactive E-commerce platform built with **React** and **Tailwind CSS**. This project focuses on providing a seamless user experience (UX) with smooth animations, dynamic theming, and a modern aesthetic.
 
-![Project Banner](https://via.placeholder.com/1200x600?text=Upload+Your+Website+Screenshot+Here)
-<!-- 👆 Note: Replace the link above with your actual project screenshot link -->
+![Project Banner](./public/Readme img/e-commerce.avif)
+
 
 <div align="center">
 
@@ -12,7 +12,7 @@ A premium, fully responsive, and highly interactive E-commerce platform built wi
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=white)
 
-[Live Demo](#) · [Report Bug](#) · [Request Feature](#)
+[Live Demo](https://e-commerce-10.vercel.app/) · [Report Bug](#) · [Request Feature](#)
 
 </div>
 
@@ -34,17 +34,6 @@ This application is packed with modern web features:
 - **Shopping Cart:** Add to cart, update quantities, and remove items dynamically.
 - **Dynamic Routing:** Seamless navigation without page reloads.
 
-## 📸 Screenshots
-
-| **Hero Section (Dark Mode)** | **Product Grid (Light Mode)** |
-|:----------------------------:|:-----------------------------:|
-| ![Hero Dark](https://via.placeholder.com/400x250) | ![Products](https://via.placeholder.com/400x250) |
-
-| **Mobile View** | **Cart Drawer** |
-|:---------------:|:---------------:|
-| ![Mobile](https://via.placeholder.com/200x400) | ![Cart](https://via.placeholder.com/200x400) |
-
-<!-- 👆 Replace these placeholder links with your actual screenshots -->
 
 ## 🛠️ Tech Stack
 
@@ -55,38 +44,40 @@ This application is packed with modern web features:
 - **Build Tool:** Vite
 
 
-```markdown
-## 🚀 Getting Started
+## 💻 Getting Started
 
-Follow these steps to run the project locally on your machine.
+Follow the instructions below to run this project locally on your machine.
 
 ### Prerequisites
-Make sure you have **Node.js** installed on your system.
+Make sure you have **Node.js** installed.
 
-### 🛠 Installation
+### Installation Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/NahidAhmed-12/e-commerce.git
+**1. Clone the repository**
+```bash
+git clone https://github.com/NahidAhmed-12/e-commerce.git
+```
 
-   
-2. **Navigate to the project directory**
-   ```bash
-   cd e-commerce
-   ```
+**2. Navigate to project directory**
+```bash
+cd your-e-commerce
+```
 
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
+**3. Install Dependencies**
+```bash
+npm install
+# or if you use yarn
+yarn install
+```
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+**4. Start the Development Server**
+```bash
+npm start
+# or
+yarn start
+```
 
-5. **Open the Project**
-   Open your browser and visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+The application will open automatically at `http://localhost:3000`.
 
 ---
 
