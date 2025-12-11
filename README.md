@@ -2,7 +2,7 @@
 
 A premium, fully responsive, and highly interactive E-commerce platform built with **React** and **Tailwind CSS**. This project focuses on providing a seamless user experience (UX) with smooth animations, dynamic theming, and a modern aesthetic.
 
-![Project Banner](./public/Readme img/e-commerce.avif)
+![Project Banner](./public/readme-img/e-commerce.avif)
 
 
 <div align="center">
