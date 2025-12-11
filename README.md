@@ -54,58 +54,82 @@ This application is packed with modern web features:
 - **State Management:** React Context API / useState
 - **Build Tool:** Vite
 
+
+```markdown
 ## 🚀 Getting Started
 
 Follow these steps to run the project locally on your machine.
 
 ### Prerequisites
-Make sure you have **Node.js** installed.
+Make sure you have **Node.js** installed on your system.
 
-### Installation
+### 🛠 Installation
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/NahidAhmed-12/e-commerce.git
-Navigate to the project directory
-code
-```Bash
-cd your-repo-name
-Install dependencies
+   ```
 
-code
-```Bash
-npm install
+2. **Navigate to the project directory**
+   ```bash
+   cd e-commerce
+   ```
 
-Run the development server
-code
-```Bash
-npm run dev
-Open your browser and visit http://localhost:5173 (or the port shown in terminal).
-📂 Project Structure
-code
-```Bash
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the Project**
+   Open your browser and visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+---
+
+## 📂 Project Structure
+
+```bash
 src/
 ├── components/       # Reusable UI components (Hero, Navbar, Card, etc.)
 ├── pages/            # Full page layouts (Home, Shop, ProductDetails)
 ├── assets/           # Images, fonts, and icons
 ├── context/          # State management (CartContext, ThemeContext)
 └── App.jsx           # Main application entry
+```
 
+---
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 
-Integration with backend (Node.js/Express).
+- [ ] Integration with backend (Node.js/Express).
+- [ ] User Authentication (Login/Signup).
+- [ ] Payment Gateway Integration (Stripe/SSLCommerz).
 
-User Authentication (Login/Signup).
+---
 
-Payment Gateway Integration (Stripe/SSLCommerz).
-👤 Author
-Nahid
-Frontend Developer
+## 👤 Author
+
+**Nahid**  
+*Frontend Developer*
+
 Passionate about building beautiful web interfaces and solving complex frontend challenges.
-GitHub: @yourusername
-LinkedIn: Nahid
-Portfolio: Your Portfolio Link
-🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-Made with ❤️ by Nahid
+
+- **GitHub:** [@NahidAhmed-12](https://github.com/NahidAhmed-12)
+- **LinkedIn:** [Nahid Ahmed](YOUR_LINKEDIN_URL_HERE)
+- **Portfolio:** [My Portfolio](YOUR_PORTFOLIO_URL_HERE)
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/NahidAhmed-12/e-commerce/issues).
+
+---
+
+**Made with ❤️ by Nahid**
+```
+
