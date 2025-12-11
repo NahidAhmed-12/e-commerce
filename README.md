@@ -85,11 +85,14 @@ The application will open automatically at `http://localhost:3000`.
 
 ```bash
 src/
-├── components/       # Reusable UI components (Hero, Navbar, Card, etc.)
-├── pages/            # Full page layouts (Home, Shop, ProductDetails)
-├── assets/           # Images, fonts, and icons
-├── context/          # State management (CartContext, ThemeContext)
-└── App.jsx           # Main application entry
+├── assets/             # Images (screenshot.avif, Nahid.avif)
+├── pages/              # All Components & Pages
+│   ├── Hero.jsx        # Main Hero section with 3D animation
+│   ├── Navbar.jsx      # Responsive Navigation
+│   ├── Footer.jsx      # Footer section
+│   └── ...             # Other page components
+├── App.js              # Main Component & Routes
+└── index.css           # Global Styles & Tailwind Directives
 ```
 
 ---
