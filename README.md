@@ -65,29 +65,33 @@ Make sure you have **Node.js** installed.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/NahidAhmed-12/e-commerce.git
 Navigate to the project directory
 code
-Bash
+```Bash
 cd your-repo-name
 Install dependencies
+
 code
-Bash
+```Bash
 npm install
+
 Run the development server
 code
-Bash
+```Bash
 npm run dev
 Open your browser and visit http://localhost:5173 (or the port shown in terminal).
 📂 Project Structure
 code
-Bash
+```Bash
 src/
 ├── components/       # Reusable UI components (Hero, Navbar, Card, etc.)
 ├── pages/            # Full page layouts (Home, Shop, ProductDetails)
 ├── assets/           # Images, fonts, and icons
 ├── context/          # State management (CartContext, ThemeContext)
 └── App.jsx           # Main application entry
+
+
 🔮 Future Improvements
 
 Integration with backend (Node.js/Express).

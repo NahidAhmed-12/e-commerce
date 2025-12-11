@@ -6,7 +6,7 @@ const slides = [
     image: "/Hero/img-1.avif",
     title: "Summer Luxe",
     subtitle: "SS/24 Collection",
-    // Orange/Gold vibes
+    
     topColor: "rgba(251, 146, 60, 0.2)", 
     bottomColor: "rgba(234, 88, 12, 0.2)" 
   },
@@ -15,7 +15,7 @@ const slides = [
     image: "/Hero/img-2.avif",
     title: "Urban Vogue",
     subtitle: "New Arrivals",
-    // Cyan/Blue vibes
+
     topColor: "rgba(34, 211, 238, 0.2)", 
     bottomColor: "rgba(37, 99, 235, 0.2)" 
   },
@@ -24,7 +24,7 @@ const slides = [
     image: "/Hero/img-3.avif",
     title: "Classic Aura",
     subtitle: "Timeless Series",
-    // Purple/Pink vibes
+ 
     topColor: "rgba(232, 121, 249, 0.2)", 
     bottomColor: "rgba(147, 51, 234, 0.2)" 
   },
@@ -33,9 +33,9 @@ const slides = [
     image: "/Hero/img-4.avif",
     title: "Pristine White",
     subtitle: "Minimalist Edition",
-    // ✅ Updated: Silver/Gray/White Glow for White Image
-    topColor: "rgba(209, 213, 219, 0.4)", // Light Gray / Silver
-    bottomColor: "rgba(107, 114, 128, 0.3)" // Cool Gray
+    
+    topColor: "rgba(209, 213, 219, 0.4)",
+    bottomColor: "rgba(107, 114, 128, 0.3)"
   }
 ];
 
