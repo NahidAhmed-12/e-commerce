@@ -5,13 +5,13 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-24 pb-10 relative overflow-hidden font-sans border-t border-white/10">
       
-      {/* 1. Decorative Background Glow (Orange) */}
+    
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-      {/* 2. Giant Watermark Brand Name (Background) */}
+     
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.03]">
          <h1 className="text-[12rem] md:text-[20rem] font-bold text-center leading-none font-serif tracking-tighter">
-            SHOPVERSE
+            MUSE
          </h1>
       </div>
 
@@ -19,16 +19,16 @@ const Footer = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
           
-          {/* Brand Info (Span 4 columns) */}
+       
           <div className="lg:col-span-4 space-y-6">
             <h2 className="text-3xl font-serif font-bold text-white tracking-wide">
-              ShopVerse<span className="text-orange-600">.</span>
+             MUSE<span className="text-orange-600">.</span>
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm font-light">
               Elevating your everyday style with a curated collection of premium fashion and lifestyle essentials. Designed for the modern individual.
             </p>
             
-            {/* Social Icons (Minimalist Circle) */}
+      
             <div className="flex gap-4 pt-4">
               {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map((Icon, index) => (
                 <a 
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support Links (Span 2) */}
+        
           <div className="lg:col-span-2">
             <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-8 border-b border-orange-600/50 pb-2 inline-block">
               Support
@@ -74,7 +74,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter (Span 4) */}
+         
           <div className="lg:col-span-4">
             <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">
               Join the Exclusive Club
@@ -83,7 +83,7 @@ const Footer = () => {
               Subscribe to receive updates, access to exclusive deals, and more.
             </p>
             
-            {/* Minimalist Input Field */}
+          
             <form className="relative group">
               <input 
                 type="email" 
@@ -103,10 +103,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-xs tracking-wide">
-            &copy; {new Date().getFullYear()} ShopVerse Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} MUSE Inc. All rights reserved.
           </p>
           
-          {/* Payment Icons (Grayscale to Hover Color) */}
+         
           <div className="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" className="h-4 w-auto"/>
              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 w-auto"/>

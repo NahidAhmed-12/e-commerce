@@ -65,12 +65,11 @@ const Products = () => {
   return (
     <div name="products" className="bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-300 w-full py-16 md:py-24 relative overflow-hidden font-sans">
       
-      {/* Decorative Background */}
+  
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         
-        {/* Header Section */}
         <div className="flex flex-col items-center justify-center mb-12 text-center">
             <span className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-[10px] md:text-xs uppercase mb-3">
                 — Weekly Selection
@@ -79,7 +78,7 @@ const Products = () => {
                 Trending <span className="italic font-light text-orange-500">Arrivals</span>
             </h2>
             
-            {/* Filter Tabs */}
+     
             <div className="flex flex-wrap justify-center gap-2 md:gap-8 mt-4">
                 {['All', 'Shoes', 'Electronics', 'Clothes', 'Accessories'].map((cat) => (
                 <button
@@ -98,7 +97,6 @@ const Products = () => {
             </div>
         </div>
 
-        {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 gap-y-8 md:gap-y-12">
           {filteredProducts.map((product) => (
             <div 
@@ -107,7 +105,7 @@ const Products = () => {
               className="group relative cursor-pointer"
             >
               
-              {/* Image Container */}
+       
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:shadow-orange-900/10 dark:group-hover:shadow-black/50">
                 <img
                   src={product.img}
@@ -143,7 +141,7 @@ const Products = () => {
               
               <div className="mt-3 text-left">
                 
-                {/* Category & Rating Row */}
+ 
                 <div className="flex justify-between items-center mb-1">
                     <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest truncate">
                         {product.category}
@@ -159,7 +157,6 @@ const Products = () => {
                     {product.name}
                 </h3>
 
-                {/* Price Row */}
                 <div className="flex items-baseline justify-start gap-2">
                     <span className="text-sm md:text-lg font-medium text-gray-900 dark:text-white">${product.price}</span>
                     {product.oldPrice > product.price && (

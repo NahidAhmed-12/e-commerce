@@ -49,7 +49,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
         onClick={handleClose}
       ></div>
 
-      {/* Main Modal Card */}
+     
       <div className={`w-full h-full sm:h-auto sm:max-h-[95vh] max-w-6xl bg-[#FFFBF7] dark:bg-[#0f0f0f] sm:rounded-3xl shadow-2xl relative flex flex-col sm:flex-row transition-all duration-500 transform overflow-y-auto sm:overflow-hidden ${isVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-12'}`}>
         
         {/* Background Ambient Glows */}
@@ -187,7 +187,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
                     </div>
                 </div>
 
-                {/* Action Buttons */}
+               
                 <div className="flex flex-col gap-4 mb-8 relative z-10">
                     <div className="flex gap-3 sm:gap-4">
                         {/* Quantity */}

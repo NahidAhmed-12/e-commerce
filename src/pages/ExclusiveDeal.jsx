@@ -64,14 +64,14 @@ const ExclusiveDeal = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           
-          {/* Image Side (Floating Effect) */}
+        
           <div className="w-full md:w-1/2 relative group flex justify-center">
             
-            {/* Glowing Circle Behind Image */}
+        
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
             
             <div className="relative z-10 transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-105">
-                {/* Image Fixed: Added fixed height and object-cover */}
+                
                 <img 
                     src="/Exclusive/Exclusive.avif" 
                     alt="Exclusive Deal" 
@@ -86,7 +86,6 @@ const ExclusiveDeal = () => {
             </div>
           </div>
 
-          {/* Content Side */}
           <div className="w-full md:w-1/2 text-center md:text-left">
             
             <div className="space-y-6">
@@ -98,8 +97,7 @@ const ExclusiveDeal = () => {
                     </span>
                 </div>
               
-                {/* Main Heading */}
-                <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
+             <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1]">
                     Nike Air <br/>
                     <span className="italic font-light text-orange-500">Jordan Limited</span>
                 </h2>
@@ -108,7 +106,7 @@ const ExclusiveDeal = () => {
                     Experience the fusion of style and comfort. A masterpiece of design available for a limited time. Don't miss out on this icon.
                 </p>
 
-                {/* Live Minimalist Timer */}
+           
                 <div className="flex justify-center md:justify-start gap-8 pt-4 pb-6">
                     {timerItems.map((item, index) => (
                         <div key={index} className="flex flex-col items-center">

@@ -93,7 +93,7 @@ const Hero = () => {
         .delay-500 { animation-delay: 0.5s; }
       `}</style>
 
-      {/* Dynamic Background Orbs */}
+    
       <div 
         className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[100px] pointer-events-none translate-x-1/3 -translate-y-1/3 transition-colors duration-[1500ms] ease-in-out"
         style={{ backgroundColor: slides[currentSlide].topColor }}
@@ -104,15 +104,15 @@ const Hero = () => {
         style={{ backgroundColor: slides[currentSlide].bottomColor }}
       ></div>
 
-      {/* Main Wrapper */}
+     
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 py-20 lg:pt-28 gap-12 lg:gap-0 relative z-10">
         
-        {/* Left Side: Content */}
+     
         <div className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left z-20 relative">
           
           <div className="space-y-6 relative z-10">
             
-            {/* Tagline */}
+     
             <div className="flex items-center justify-center lg:justify-start gap-3 animate-fadeInUp delay-100">
                 <span className="w-8 h-[2px] bg-orange-500 inline-block"></span>
                 <p className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-xs uppercase">
@@ -120,10 +120,10 @@ const Hero = () => {
                 </p>
             </div>
             
-            {/* H1 Title */}
+        
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gray-900 dark:text-white leading-[1.2] relative inline-block animate-fadeInUp delay-200">
               
-              {/* Star */}
+         
               <svg className="absolute -top-6 -right-8 w-8 h-8 text-orange-400 animate-[spin_4s_linear_infinite]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
               </svg>
@@ -145,7 +145,7 @@ const Hero = () => {
             </p>
           </div>
           
-          {/* Buttons */}
+       
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-8 relative z-10 animate-fadeInUp delay-400">
             <button 
               onClick={scrollToProducts}
@@ -168,7 +168,7 @@ const Hero = () => {
           {/* Stats */}
           <div className="flex items-center justify-center lg:justify-start gap-8 pt-10 relative z-10 animate-fadeInUp delay-500">
              <div>
-                <p className="text-2xl font-serif text-gray-900 dark:text-white">2k+</p>
+                <p className="text-2xl font-serif text-gray-900 dark:text-white">5k+</p>
                 <p className="text-xs text-orange-500/80 uppercase tracking-wider mt-1">Products</p>
              </div>
              <div className="w-px h-8 bg-orange-200 dark:bg-orange-900"></div>
@@ -182,15 +182,15 @@ const Hero = () => {
 
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative animate-fadeInScale delay-200">
           
-          {/* Animated Background Rings */}
+         
           <div className="absolute top-1/2 left-1/2 lg:left-auto lg:right-[190px] -translate-x-1/2 lg:translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] z-0 hidden sm:block pointer-events-none">
              <div className="absolute inset-0 border border-dashed border-orange-300 dark:border-orange-800/40 rounded-full animate-[spin_20s_linear_infinite] opacity-40"></div>
              <div className="absolute inset-12 border border-orange-200 dark:border-orange-900/30 rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-60"></div>
-             {/* Ring Glow */}
+            
              <div className="absolute inset-20 rounded-full blur-2xl animate-pulse transition-colors duration-1000" style={{ backgroundColor: slides[currentSlide].topColor }}></div>
           </div>
 
-          {/* Image Container */}
+         
           <div className="relative w-full max-w-sm aspect-[3/4] group z-10">
             <div className="absolute top-5 -right-5 w-full h-full border-2 border-orange-500/20 rounded-2xl z-0 hidden lg:block transition-all duration-500 group-hover:top-3 group-hover:-right-3"></div>
 
@@ -205,7 +205,6 @@ const Hero = () => {
                 </div>
                 ))}
                 
-                {/* Dots Navigation */}
                 <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
                     {slides.map((_, index) => (
                     <button

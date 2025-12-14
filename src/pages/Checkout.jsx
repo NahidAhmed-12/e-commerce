@@ -8,7 +8,7 @@ import { useCart } from './CartContext';
 const Checkout = ({ isOpen, onClose }) => {
   const { cartItems, getCartTotal } = useCart();
   const [paymentMethod, setPaymentMethod] = useState('card');
-  const [isSummaryOpen, setIsSummaryOpen] = useState(false); // Mobile dropdown toggle state
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false); 
 
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const Checkout = ({ isOpen, onClose }) => {
                        ))}
                     </div>
 
-                    {/* Card Details Inputs (Conditional) */}
+                 
                     {paymentMethod === 'card' && (
                         <div className="mt-6 p-4 bg-gray-50 dark:bg-[#252525] rounded-xl border border-gray-200 dark:border-gray-700 space-y-4 animate-fadeIn">
                             <div>
@@ -167,7 +167,7 @@ const Checkout = ({ isOpen, onClose }) => {
               </span>
            </div>
 
-           {/* Desktop Header (Static) */}
+           
            <div className="hidden md:flex p-6 md:p-8 border-b border-gray-200 dark:border-gray-800 justify-between items-center">
               <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white">Order Summary</h3>
            </div>
@@ -191,7 +191,7 @@ const Checkout = ({ isOpen, onClose }) => {
               </div>
            </div>
 
-           {/* 3. Footer Totals & Pay Button (Always Visible at Bottom) */}
+         
            <div className="p-6 md:p-8 bg-white dark:bg-[#1a1a1a] md:bg-transparent">
                <div className="space-y-2 mb-4">
                   <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">

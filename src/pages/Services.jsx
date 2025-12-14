@@ -39,12 +39,12 @@ const Services = () => {
             key={id} 
             className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-white/5 border border-orange-100/60 dark:border-white/10 hover:border-orange-300 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-900/5 transition-all duration-300 cursor-default group"
           >
-            {/* Icon Box */}
+          
             <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
               {icon}
             </div>
             
-            {/* Text Content */}
+      
             <div>
                 <h3 className="font-serif font-bold text-gray-900 dark:text-white text-lg group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
                     {title}

@@ -31,15 +31,11 @@ const Categories = () => {
 
   return (
     <section className="py-24 bg-[#FFFBF7] dark:bg-[#0f0f0f] relative overflow-hidden font-sans transition-colors duration-300">
-      
-      {/* Decorative Background Blur (Bottom Right) */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none translate-y-1/3 translate-x-1/3"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Header Section */}
-        {/* FIX: items-end এর বদলে items-center md:items-end দেওয়া হয়েছে */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
+       <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6">
             <div className="text-center md:text-left">
                 <span className="text-orange-600 dark:text-orange-400 font-bold tracking-[0.2em] text-xs uppercase">
                     — Curated Collections
@@ -49,7 +45,7 @@ const Categories = () => {
                 </h2>
             </div>
             
-            {/* View All Button */}
+      
             <button className="hidden md:flex items-center gap-2 text-sm font-bold tracking-widest uppercase border-b border-gray-300 dark:border-gray-700 pb-1 hover:text-orange-600 hover:border-orange-600 transition-all duration-300 dark:text-gray-300">
                 View All Collections <FaArrowRight className="w-3 h-3" />
             </button>
@@ -71,21 +67,21 @@ const Categories = () => {
                   />
               </div>
 
-              {/* Overlay Gradient (Better readability) */}
+           
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
 
-              {/* Internal Border (Premium Feel) */}
+            
               <div className="absolute inset-4 border border-white/20 rounded-xl opacity-50 group-hover:opacity-100 group-hover:inset-3 transition-all duration-500 pointer-events-none"></div>
 
-              {/* Content Box */}
+            
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 
-                {/* Item Count Badge */}
+            
                 <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs px-3 py-1 rounded-full opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                     {count}
                 </div>
 
-                {/* Text Content */}
+               
                 <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <h3 className="text-2xl font-serif text-white mb-1 leading-snug">
                     {title}
@@ -102,7 +98,7 @@ const Categories = () => {
           ))}
         </div>
 
-        {/* Mobile View All Button (Visible only on small screens) */}
+      
         <div className="mt-8 flex justify-center md:hidden">
             <button className="flex items-center gap-2 text-sm font-bold tracking-widest uppercase border-b border-gray-300 pb-1 hover:text-orange-600 transition-colors">
                 View All <FaArrowRight className="w-3 h-3" />

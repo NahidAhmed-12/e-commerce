@@ -5,7 +5,7 @@ import { useCart } from './CartContext';
 const CartSidebar = ({ onCheckout }) => {
   const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, getCartTotal } = useCart();
   
-  // Free Shipping Logic (Example: Free shipping over $200)
+
   const total = getCartTotal();
   const freeShippingThreshold = 200;
   const progress = Math.min((total / freeShippingThreshold) * 100, 100);
@@ -16,7 +16,7 @@ const CartSidebar = ({ onCheckout }) => {
   return (
     <div className="fixed inset-0 z-[100] flex justify-end">
       
-      {/* 1. Backdrop (Blur Effect) */}
+  
       <div 
         className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500"
         onClick={() => setIsCartOpen(false)}
@@ -43,7 +43,7 @@ const CartSidebar = ({ onCheckout }) => {
           </button>
         </div>
 
-        {/* --- Free Shipping Progress Bar --- */}
+   
         {cartItems.length > 0 && (
             <div className="px-8 py-4 bg-gray-50 dark:bg-white/5">
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 font-medium">
@@ -66,7 +66,7 @@ const CartSidebar = ({ onCheckout }) => {
             </div>
         )}
 
-        {/* --- Cart Items List --- */}
+  
         <div className="flex-1 overflow-y-auto p-8 space-y-8 scrollbar-hide">
           {cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-6 opacity-60">
@@ -109,10 +109,10 @@ const CartSidebar = ({ onCheckout }) => {
                     </p>
                   </div>
                   
-                  {/* Quantity & Remove */}
+
                   <div className="flex justify-between items-end mt-4">
                     
-                    {/* Minimal Quantity Selector */}
+       
                     <div className="flex items-center gap-3 bg-gray-50 dark:bg-white/5 rounded-full px-3 py-1 border border-gray-200 dark:border-gray-700">
                       <button 
                         onClick={() => updateQuantity(item.id, item.selectedColor, item.selectedSize, -1)}
@@ -131,7 +131,7 @@ const CartSidebar = ({ onCheckout }) => {
                       </button>
                     </div>
 
-                    {/* Remove Button (Icon only style) */}
+              
                     <button 
                       onClick={() => removeFromCart(item.id, item.selectedColor, item.selectedSize)}
                       className="flex items-center gap-1 text-xs font-medium text-gray-400 hover:text-red-500 transition-colors border-b border-transparent hover:border-red-500 pb-0.5"
@@ -145,7 +145,6 @@ const CartSidebar = ({ onCheckout }) => {
           )}
         </div>
 
-        {/* --- Footer --- */}
         {cartItems.length > 0 && (
           <div className="p-8 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-[#121212]">
             
@@ -169,7 +168,7 @@ const CartSidebar = ({ onCheckout }) => {
               <span className="text-2xl font-serif font-bold text-orange-600">${getCartTotal()}</span>
             </div>
             
-            {/* Checkout Button */}
+          
             <button 
               onClick={() => {
                 setIsCartOpen(false);

@@ -29,7 +29,7 @@ const Testimonials = () => {
   return (
     <section className="w-full py-24 bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-300 relative overflow-hidden font-sans">
       
-      {/* Background Decor (Center Glow) */}
+    
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-orange-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -44,7 +44,7 @@ const Testimonials = () => {
             </h2>
         </div>
 
-        {/* Reviews Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map(({ id, name, role, img, text }) => (
             <div 
@@ -54,7 +54,7 @@ const Testimonials = () => {
                            transition-all duration-500 hover:-translate-y-2"
             >
               
-              {/* Huge Watermark Quote Icon */}
+              
               <div className="absolute top-6 right-8 text-8xl text-orange-500/5 group-hover:text-orange-500/10 transition-colors duration-500 pointer-events-none font-serif">
                 ”
               </div>
@@ -71,10 +71,10 @@ const Testimonials = () => {
                 "{text}"
               </p>
               
-              {/* User Info */}
+         
               <div className="flex items-center gap-4 pt-6 border-t border-gray-100 dark:border-white/5 group-hover:border-orange-100 dark:group-hover:border-white/10 transition-colors">
                 
-                {/* Avatar with Ring */}
+               
                 <div className="relative">
                     <div className="absolute inset-0 bg-orange-500 rounded-full blur opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
                     <img 

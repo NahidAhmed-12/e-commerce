@@ -34,14 +34,14 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  // Remove from Cart
+
   const removeFromCart = (id, color, size) => {
     setCartItems((prevItems) => 
       prevItems.filter((item) => !(item.id === id && item.selectedColor === color && item.selectedSize === size))
     );
   };
 
-  // Update Quantity
+
   const updateQuantity = (id, color, size, amount) => {
     setCartItems((prevItems) => 
       prevItems.map((item) => {
