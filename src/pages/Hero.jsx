@@ -16,13 +16,27 @@ const slides = [
     details: [
         { label: "Material", value: "100% Linen" },
         { label: "Fit", value: "Relaxed" },
-        { label: "Origin", value: "Italy" }
+        { label: "Origin", value: "China" }
     ]
   },
   {
     id: 2,
     imageMain: "/Hero/img-2.avif",
-    imageDetail: "/Hero/img-2.avif",
+    imageDetail: "/Hero/img-2.avif", 
+    title: "Summer Breeze",
+    category: "SS/24 Collection",
+    price: "$249.00",
+    description: "Experience the ultimate comfort with our lightweight breathable fabrics designed specifically for the golden hour.",
+    details: [
+        { label: "Material", value: "100% Linen" },
+        { label: "Fit", value: "Relaxed" },
+        { label: "Origin", value: "South Korea" }
+    ]
+  },
+  {
+    id: 3,
+    imageMain: "/Hero/img-3.avif",
+    imageDetail: "/Hero/img-3.avif",
     title: "Urban Shield",
     category: "Outerwear Series",
     price: "$399.00",
@@ -34,9 +48,9 @@ const slides = [
     ]
   },
   {
-    id: 3,
-    imageMain: "/Hero/img-3.avif",
-    imageDetail: "/Hero/img-3.avif",
+    id: 4,
+    imageMain: "/Hero/img-4.avif",
+    imageDetail: "/Hero/img-4.avif",
     title: "Velvet Night",
     category: "Evening Wear",
     price: "$550.00",
