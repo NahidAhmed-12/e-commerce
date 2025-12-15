@@ -17,3 +17,50 @@ body {
     @apply bg-[#0f0f0f] text-white;
   }
 }
+
+
+
+ .fill-mode-forwards { animation-fill-mode: forwards; }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-revealText { animation: revealText 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+
+        @keyframes slideInRight {
+             0% { transform: translateX(-20px); opacity: 0; }
+             100% { transform: translateX(0); opacity: 1; }
+        }
+        .animate-slideInRight { animation: slideInRight 0.6s ease-out forwards; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
+
+        @keyframes imageReveal {
+            0% { clip-path: inset(0 100% 0 0); transform: scale(1.1); }
+            100% { clip-path: inset(0 0 0 0); transform: scale(1); }
+        }
+        .animate-imageReveal { animation: imageReveal 1.2s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
+
+        @keyframes imageZoom {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1.0); }
+        }
+        .animate-imageZoom { animation: imageZoom 2s ease-out forwards; }
+
+        @keyframes floatIn {
+            0% { transform: translateY(40px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .animate-floatIn { animation: floatIn 1s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+      
