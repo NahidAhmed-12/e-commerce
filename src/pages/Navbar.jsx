@@ -129,7 +129,7 @@ const Navbar = () => {
           </div>
 
 
-          {/* --- CENTER: Desktop Links --- */}
+
           <div className="hidden lg:flex items-center gap-10 absolute left-1/2 transform -translate-x-1/2">
              {navLinks.map((link) => (
                 <a 

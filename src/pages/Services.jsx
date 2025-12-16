@@ -1,62 +1,67 @@
 import React from 'react';
-
-import { FaShippingFast, FaHeadset, FaMoneyBillWave, FaShieldAlt } from 'react-icons/fa';
+import { FiTruck, FiRefreshCw, FiHeadphones, FiShield } from 'react-icons/fi';
 
 const Services = () => {
   const services = [
     {
       id: 1,
-      icon: <FaShippingFast size={26} />,
-      title: "Free Shipping",
-      desc: "On all orders over $100",
+      icon: <FiTruck size={24} />,
+      title: "Global Shipping",
+      desc: "Free delivery over $150",
     },
     {
       id: 2,
-      icon: <FaMoneyBillWave size={26} />,
-      title: "Money Returns",
-      desc: "30 Days money-back guarantee",
+      icon: <FiRefreshCw size={24} />,
+      title: "Easy Returns",
+      desc: "30-day return policy",
     },
     {
       id: 3,
-      icon: <FaHeadset size={26} />,
-      title: "24/7 Support",
-      desc: "Get help when you need it",
+      icon: <FiShield size={24} />, 
+      title: "Secure Payment",
+      desc: "100% secure checkout",
     },
     {
       id: 4,
- 
-      icon: <FaShieldAlt size={26} />, 
-      title: "Secure Payment",
-      desc: "100% Protected transactions",
+      icon: <FiHeadphones size={24} />,
+      title: "24/7 Support",
+      desc: "Dedicated support team",
     },
   ];
 
   return (
-    <div className="py-16 bg-[#FFFBF7] dark:bg-[#0f0f0f] transition-colors duration-300 font-sans">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map(({ id, icon, title, desc }) => (
-          <div 
-            key={id} 
-            className="flex items-center gap-5 p-6 rounded-2xl bg-white dark:bg-white/5 border border-orange-100/60 dark:border-white/10 hover:border-orange-300 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-900/5 transition-all duration-300 cursor-default group"
-          >
-          
-            <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-orange-50 dark:bg-orange-900/20 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
-              {icon}
-            </div>
-            
+    <section className="bg-[#F4F4F0] dark:bg-[#0f0f0f] border-t border-gray-200 dark:border-white/10 transition-colors duration-500">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-16">
+        
       
-            <div>
-                <h3 className="font-serif font-bold text-gray-900 dark:text-white text-lg group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
-                    {title}
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-light mt-1">
-                    {desc}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-white/10 border-b border-gray-200 dark:border-white/10 lg:border-b-0">
+          
+          {services.map(({ id, icon, title, desc }) => (
+            <div 
+              key={id} 
+              className="group flex flex-col items-center text-center py-12 px-6 transition-colors duration-300 hover:bg-white dark:hover:bg-white/5"
+            >
+              
+          
+              <div className="mb-5 text-gray-800 dark:text-gray-200 group-hover:text-amber-600 transition-colors duration-300 transform group-hover:-translate-y-1 ease-out">
+                {icon}
+              </div>
+              
+              
+              <h3 className="font-serif text-lg font-medium text-gray-900 dark:text-white mb-2">
+                {title}
+              </h3>
+              
+              <p className="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-sans">
+                {desc}
+              </p>
+
             </div>
-          </div>
-        ))}
+          ))}
+
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
